@@ -35,7 +35,6 @@ public class Circle {
 		}
 	}
 
-
 	public static void MidPoint(int radius) {
 		/*
 		- Initialize x = 0, y = radius
@@ -46,19 +45,25 @@ public class Circle {
 		- Loop while (x < y)
 		 */
 
-		int x = 0;
-		int y = radius;
+		int[] x = new int[radius * radius];
+		x[0] = 0;
+		int[] y = new int[radius * radius];
+		y[0] = radius;
 		int decisionParameter = 5 / 4 - radius;
+		int i = 0;
 
-		while (x < y) {
-			x++;
+		while (x[i] < y[i]) {
+			x[i + 1] = x[i] + 1;
 			if (decisionParameter < 0) {
-				decisionParameter += 2 * x + 1;
+				y[i + 1] = y[i];
+				decisionParameter += 2 * x[i] + 1;
 			} else {
-				y--;
-				decisionParameter += 2 * (x - y) + 1;
+				y[i + 1] = y[i] - 1;
+				decisionParameter += 2 * (x[i] - y[i]) + 1;
 			}
+			i++;
 		}
-
+		Plotter plotObj = new Plotter();
+		plotObj.printCoordinates(x, y);
 	}
 }
