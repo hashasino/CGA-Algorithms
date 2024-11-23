@@ -3,11 +3,20 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 
+		//Initializing Scanner object
 		Scanner scan = new Scanner(System.in);
+
+		//Initializing LineDDA object
 		LineDDA newLine = new LineDDA();
+
+		//Initializing Circle object
+		Circle newCircle = new Circle();
+
+		//Initializing condition variables
 		boolean condition = true;
 		int choice = 0;
 
+		//Displaying Algo choice menu
 		System.out.println("\nChoose an algorithm:");
 		System.out.println("  1. Simple DDA");
 		System.out.println("  2. Symmetrical DDA");
@@ -16,6 +25,7 @@ public class Main {
 		System.out.println("  5. Circle Mid Point");
 		System.out.println("  0. Exit program");
 
+		//Taking input to decide choice of algorithm
 		while (condition) {
 
 			choice = scan.nextInt();
@@ -48,12 +58,14 @@ public class Main {
 			}
 		}
 
+		//Taking input for the parameters for the chosen algorithm
 		System.out.println("Input coordinates in the following format: x1 y1 x2 y2");
 		int x1 = scan.nextInt();
 		int y1 = scan.nextInt();
 		int x2 = scan.nextInt();
 		int y2 = scan.nextInt();
 
+		//Executing chosen algorithm
 		System.out.println("  Line coordinates:");
 		switch (choice) {
 			case 1:
@@ -63,13 +75,13 @@ public class Main {
 				newLine.SymmetricalDDA(x1, y1, x2, y2);
 				break;
 			case 3:
-				Circle.DDA(x1);
+				newCircle.DDA(x1);
 				break;
 			case 4:
-				Circle.Bresenham(x1);
+				newCircle.Bresenham(x1);
 				break;
 			case 5:
-				Circle.MidPoint(x1);
+				newCircle.MidPoint(x1);
 				break;
 		}
 	}

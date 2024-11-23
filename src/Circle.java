@@ -2,7 +2,7 @@ public class Circle {
 
 //	Contains all Circle Drawing Algorithms
 
-	public static void DDA(int radius) {
+	public void DDA(int radius) {
 		/*
 		- Initialize x = 0, y = radius
 		- Find epsilon = 2^-n, where 2^(n-1) <= radius < 2^n
@@ -11,7 +11,7 @@ public class Circle {
 		 */
 	}
 
-	public static void Bresenham(int radius) {
+	public void Bresenham(int radius) {
 		/*
 		- Initialize x = 0, y = radius
 		- Calculate decision parameter (dP) = 3 - 2 * radius
@@ -35,7 +35,7 @@ public class Circle {
 		}
 	}
 
-	public static void MidPoint(int radius) {
+	public void MidPoint(int radius) {
 		/*
 		- Initialize x = 0, y = radius
 		- Calculate decision parameter (dP) = 5/4 - radius
