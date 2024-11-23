@@ -1,6 +1,7 @@
-public class Circle {
 
 //	Contains all Circle Drawing Algorithms
+
+public class Circle {
 
 	public void DDA(int radius) {
 		/*
@@ -11,7 +12,7 @@ public class Circle {
 		 */
 	}
 
-	public void Bresenham(int radius) {
+	public void Bresenhams(int radius) {
 		/*
 		- Initialize x = 0, y = radius
 		- Calculate decision parameter (dP) = 3 - 2 * radius
