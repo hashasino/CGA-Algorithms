@@ -12,6 +12,15 @@ public class Plotter {
 		}
 	}
 
+	public void printCoordinates(int[] x, int[] y, int radius) {
+		for (int j = 0; j < radius; j++) {
+			for (int i = 0; i < radius; i++) {
+				System.out.print("(" + x[i] + "," + y[i] + ") ");
+			}
+			System.out.println();
+		}
+	}
+
 	public void plotCoordinates(double[] x, double[] y) {
 
 	}

@@ -15,11 +15,8 @@ public class Line {
 		int steps = Math.max(Math.abs(delX), Math.abs(delY));
 
 		//Deciding increment sign/polarity
-		int directionX, directionY;
-		if (x1 < x2) directionX = 1;
-		else directionX = -1;
-		if (y1 < y2) directionY = 1;
-		else directionY = -1;
+		int directionX = Integer.compare(x2, x1);
+		int directionY = Integer.compare(y2, y1);
 
 		//Calculating increments values
 		double xIncrement, yIncrement;
@@ -110,9 +107,8 @@ public class Line {
 		int decisionParameter = 2 * delY - delX;
 
 		//Deciding increment sign/polarity
-		int xIncrement, yIncrement;
-		xIncrement = Integer.compare(x2, x1);
-		yIncrement = Integer.compare(y2, y1);
+		int xIncrement = Integer.compare(x2, x1);
+		int yIncrement = Integer.compare(y2, y1);
 
 		/*Initializing iteration counter*/
 		int i = 1;
@@ -145,4 +141,5 @@ public class Line {
 		plotObj.printCoordinates(x, y);
 
 	} //End Method
+
 }
