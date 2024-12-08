@@ -26,10 +26,10 @@ public class Plotter {
 	public void plotCoordinates(double[] x, double[] y) {
 
 		// Finding the min and max coordinates to determine grid size
-		int minX = (int) Math.floor(Arrays.stream(x).min().getAsDouble());
-		int maxX = (int) Math.ceil(Arrays.stream(x).max().getAsDouble());
-		int minY = (int) Math.floor(Arrays.stream(y).min().getAsDouble());
-		int maxY = (int) Math.ceil(Arrays.stream(y).max().getAsDouble());
+		int minX = (int) Math.floor(Arrays.stream(x).min().orElse(0.0));
+		int maxX = (int) Math.ceil(Arrays.stream(x).max().orElse(0.0));
+		int minY = (int) Math.floor(Arrays.stream(y).min().orElse(0.0));
+		int maxY = (int) Math.ceil(Arrays.stream(y).max().orElse(0.0));
 
 		// Calculating grid dimensions
 		int width = maxX - minX + 3;  // +3 for padding
@@ -66,10 +66,10 @@ public class Plotter {
 	public void plotCoordinates(int[] x, int[] y) {
 
 		// Finding the min and max coordinates to determine grid size
-		int minX = Arrays.stream(x).min().getAsInt();
-		int maxX = Arrays.stream(x).max().getAsInt();
-		int minY = Arrays.stream(y).min().getAsInt();
-		int maxY = Arrays.stream(y).max().getAsInt();
+		int minX = Arrays.stream(x).min().orElse(0);
+		int maxX = Arrays.stream(x).max().orElse(0);
+		int minY = Arrays.stream(y).min().orElse(0);
+		int maxY = Arrays.stream(y).max().orElse(0);
 
 		// Calculating grid dimensions
 		int width = maxX - minX + 3;  // +3 for padding
@@ -104,5 +104,3 @@ public class Plotter {
 	}
 
 }
-
-
