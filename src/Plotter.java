@@ -50,7 +50,7 @@ public class Plotter {
 
 			// Ensure coordinate is within grid bounds
 			if (X >= 0 && X < width && Y >= 0 && Y < height) {
-				grid[height - Y - 1][X] = '*'; // Plotting point & flipping y-axis for display
+				grid[X][height - Y - 1] = '*'; // Plotting point & flipping y-axis for display
 			}
 		}
 
