@@ -37,59 +37,65 @@ public class Circle {
 		plotObj.plotCoordinates(Circle, radius);
 	}
 
+	//Bresenham's Circle Drawing Algorithm
 	public void Bresenhams(int radius) {
-		/*
-		- Initialize x = 0, y = radius
-		- Calculate decision parameter (dP) = 3 - 2 * radius
-		- If (dP < 0), x = x+1, dP = dP + 4x + 6
-		- else If ( dp >= 0), x = x+1, y = y+1, dP = dP + 4x - 4y + 10
-		- Loop while (x < y)
-		 */
 
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
+		//Initializing loop variables
 		int x = 0;
 		int y = radius;
 		int decisionParameter = 3 - 2 * radius;
 
-		while (x < y) {
+		//Calculating the first octant
+		while (x <= y) {
+			Circle.add(new Point(x, y));
 			x++;
 			if (decisionParameter < 0) {
 				decisionParameter += 4 * x + 6;
 			} else {
-				y++;
+				y--;
 				decisionParameter += 4 * (x - y) + 10;
 			}
 		}
+
+		//Plotting the Circle using the coordinates calculated
+		Plotter plotObj = new Plotter();
+		plotObj.printCoordinates(Circle, radius);
+		System.out.println();
+		plotObj.plotCoordinates(Circle, radius);
+
 	}
 
+	//Bresenham's Circle Drawing Algorithm
 	public void MidPoint(int radius) {
-		/*
-		- Initialize x = 0, y = radius
-		- Calculate decision parameter (dP) = 5/4 - radius
-		- If (dP < 0), x = x+1, y = y & dP = dP + 1 + 2x
-		- else If (dP >= 0), x = x+1, y = y-1 & dP = dP + 1 + 2x - 2y
-		- Generate points for all 8 octants, i.e. (x,y), (y,x), (-x,y), (-y,x), (-x,-y), (-y,-x), (x,-y) & (y,-x)
-		- Loop while (x < y)
-		 */
 
-		int[] x = new int[radius * radius];
-		x[0] = 0;
-		int[] y = new int[radius * radius];
-		y[0] = radius;
-		int decisionParameter = 5 / 4 - radius;
-		int i = 0;
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
 
-		while (x[i] < y[i]) {
-			x[i + 1] = x[i] + 1;
+		//Initializing loop variables
+		int x = 0;
+		int y = radius;
+		int decisionParameter = 3 - 2 * radius;
+
+		//Calculating the first octant
+		while (x <= y) {
+			Circle.add(new Point(x, y));
+			x++;
 			if (decisionParameter < 0) {
-				y[i + 1] = y[i];
-				decisionParameter += 2 * x[i] + 1;
+				decisionParameter += 2 * x + 1;
 			} else {
-				y[i + 1] = y[i] - 1;
-				decisionParameter += 2 * (x[i] - y[i]) + 1;
+				y--;
+				decisionParameter += 2 * (x - y) + 1;
 			}
-			i++;
 		}
+
+		//Plotting the Circle using the coordinates calculated
 		Plotter plotObj = new Plotter();
-//		plotObj.printCoordinates(x, y, radius);
+		plotObj.printCoordinates(Circle, radius);
+		System.out.println();
+		plotObj.plotCoordinates(Circle, radius);
+
 	}
 }

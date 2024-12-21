@@ -6,7 +6,7 @@ public class Test {
 
 //		Test.LineDrawingAlgorithms();
 
-		Test.CircleDrawingAlgorithms();
+//		Test.CircleDrawingAlgorithms();
 	}
 
 	static void LineDrawingAlgorithms() {
@@ -43,7 +43,7 @@ public class Test {
 			newLine.SymmetricalDDA(x1, y1, x2, y2);
 
 			//Calculating line using Bresenham's
-			System.out.println("Bresenhams");
+			System.out.println("Bresenham's");
 			newLine.Bresenhams(x1, y1, x2, y2);
 
 			//Calculating line using Midpoint
@@ -80,16 +80,15 @@ public class Test {
 			newCircle.DDA(radius);
 
 			//Calculating line using Bresenham's
-			System.out.println("Bresenhams");
-//			newCircle.Bresenhams(radius);
+			System.out.println("Bresenham's");
+			newCircle.Bresenhams(radius);
 
 			//Calculating line using Midpoint
 			System.out.println("Midpoint");
-//			newCircle.MidPoint(radius);
+			newCircle.MidPoint(radius);
 
 			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
 		}
 	}
 
 }
-

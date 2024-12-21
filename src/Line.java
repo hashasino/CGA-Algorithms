@@ -96,7 +96,7 @@ public class Line {
 		int delX = Math.abs(x2 - x1);
 		int delY = Math.abs(y2 - y1);
 
-		//Initializing the decision parameter
+		//Initializing decision parameter
 		int decisionParameter = 2 * delY - delX;
 
 		//Deciding increment sign+values (-1, 0, 1)
