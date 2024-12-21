@@ -29,15 +29,15 @@ public class Test {
 
 			//Calculating coordinates using SimpleDDA
 			newLine.SimpleDDA(x1, y1, x2, y2);
-			System.out.println();
+			System.out.println("SimpleDDA");
 
 			//Calculating coordinates using SymmetricalDDA
 			newLine.SymmetricalDDA(x1, y1, x2, y2);
-			System.out.println();
+			System.out.println("SymmetricalDDA");
 
 			//Calculating coordinates using Bresenham's
 			newLine.Bresenhams(x1, y1, x2, y2);
-			System.out.println();
+			System.out.println("Bresenhams");
 
 			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
 		}

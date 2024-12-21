@@ -57,7 +57,7 @@ public class Circle {
 		Plotter plotObj = new Plotter();
 
 		//Plotting the line using the coordinates calculated
-		plotObj.printCoordinates(x, y, radius);
+//		plotObj.printCoordinates(x, y, radius);
 	}
 
 	public void Bresenhams(int radius) {
@@ -113,6 +113,6 @@ public class Circle {
 			i++;
 		}
 		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(x, y);
+//		plotObj.printCoordinates(x, y, radius);
 	}
 }

@@ -1,106 +1,79 @@
-import java.util.Arrays;
+import java.util.List;
 
 public class Plotter {
 
-	public void printCoordinates(double[] x, double[] y) {
-		for (int i = 0; i < x.length; i++) {
-			System.out.print("(" + Math.round(x[i]) + "," + Math.round(y[i]) + ") ");
+	public void printCoordinates(List<Point> Line) {
+		for (Point point : Line) {
+			System.out.print(point.getCoordinates() + ' ');
 		}
 	}
 
-	public void printCoordinates(int[] x, int[] y) {
-		for (int i = 0; i < x.length; i++) {
-			System.out.print("(" + x[i] + "," + y[i] + ") ");
+	public void plotCoordinates(List<Point> Line) {
+
+		//Setting initial min/max value
+		double minX = Double.MAX_VALUE;
+		double maxX = Double.MIN_VALUE;
+		double minY = Double.MAX_VALUE;
+		double maxY = Double.MIN_VALUE;
+
+		//Finding min & max for x & y for all points in the list
+		for (Point point : Line) {
+			if (point.x < minX) minX = point.x;
+			if (point.x > maxX) maxX = point.x;
+			if (point.y < minY) minY = point.y;
+			if (point.y > maxY) maxY = point.y;
 		}
-	}
-
-	public void printCoordinates(int[] x, int[] y, int radius) {
-		for (int j = 0; j < radius; j++) {
-			for (int i = 0; i < radius; i++) {
-				System.out.print("(" + x[i] + "," + y[i] + ") ");
-			}
-			System.out.println();
-		}
-	}
-
-	public void plotCoordinates(double[] x, double[] y) {
-
-		// Finding the min and max coordinates to determine grid size
-		int minX = (int) Math.floor(Arrays.stream(x).min().orElse(0.0));
-		int maxX = (int) Math.ceil(Arrays.stream(x).max().orElse(0.0));
-		int minY = (int) Math.floor(Arrays.stream(y).min().orElse(0.0));
-		int maxY = (int) Math.ceil(Arrays.stream(y).max().orElse(0.0));
 
 		// Calculating grid dimensions
-		int width = maxX - minX + 3;  // +3 for padding
-		int height = maxY - minY + 3; // +3 for padding
+		int width = (int) (maxX - minX + 1);
+		int height = (int) (maxY - minY + 1);
 
-		// Initializing grid
-		char[][] grid = new char[width][height];
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				grid[i][j] = '.';
-			}
-		}
+		//Initializing grid/frame buffer
+		String[][] grid = initializeGrid(width, height);
 
 		// Plotting coordinates
-		for (int i = 0; i < x.length; i++) {
-			int X = (int) Math.round(x[i]) - minX + 1;
-			int Y = (int) Math.round(y[i]) - minY + 1;
+		for (Point point : Line) {
+			int X = (int) (Math.round(point.x - minX) + 1);
+			int Y = (int) (Math.round(point.y - minY) + 1);
 
-			// Ensure coordinate is within grid bounds
-			if (X >= 0 && X < width && Y >= 0 && Y < height) {
-				grid[X][height - Y - 1] = '*'; // Plotting point & flipping y-axis for display
-			}
+			grid[X - 1][height - Y] = String.valueOf('*');
 		}
 
 		// Displaying coordinate grid
-		for (char[] row : grid) {
-			for (char cell : row) {
-				System.out.print(cell + "  ");
+		for (int j = 0; j < height; j++) {
+			for (int i = 0; i < width; i++) {
+				String cell = grid[i][j];
+				System.out.printf("%4s", cell);
 			}
 			System.out.println();
 		}
 	}
 
-	public void plotCoordinates(int[] x, int[] y) {
+	String[][] initializeGrid(int width, int height) {
 
-		// Finding the min and max coordinates to determine grid size
-		int minX = Arrays.stream(x).min().orElse(0);
-		int maxX = Arrays.stream(x).max().orElse(0);
-		int minY = Arrays.stream(y).min().orElse(0);
-		int maxY = Arrays.stream(y).max().orElse(0);
+		String[][] grid = new String[width][height];
 
-		// Calculating grid dimensions
-		int width = maxX - minX + 3;  // +3 for padding
-		int height = maxY - minY + 3; // +3 for padding
-
-		// Initializing grid
-		char[][] grid = new char[width][height];
+		//Drawing background characters
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				grid[i][j] = '.';
+				grid[i][j] = ".";
 			}
 		}
 
-		// Plotting coordinates
-		for (int i = 0; i < x.length; i++) {
-			int X = x[i] - minX + 1;
-			int Y = y[i] - minY + 1;
-
-			// Ensure coordinate is within grid bounds
-			if (X >= 0 && X < width && Y >= 0 && Y < height) {
-				grid[height - Y - 1][X] = '*'; // Plotting point & flipping y-axis for display
-			}
+		//Drawing ordinate & abscissa markings
+		int centerX = width / 2;
+		int centerY = height / 2;
+		for (int j = 0; j < height; j++) {
+			int value = centerY - j;
+			grid[centerX][j] = String.valueOf(value); //Ordinate
 		}
-
-		// Displaying coordinate grid
-		for (char[] row : grid) {
-			for (char cell : row) {
-				System.out.print(cell + "  ");
-			}
-			System.out.println();
+		for (int i = 0; i < width; i++) {
+			int value = i - centerX;
+			grid[i][centerY] = String.valueOf(value); //Abscissa
 		}
+		grid[centerX][centerY] = "0"; //Center
+
+		return grid;
 	}
 
 }
