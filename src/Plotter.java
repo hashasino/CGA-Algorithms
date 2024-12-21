@@ -29,7 +29,7 @@ public class Plotter {
 		int height = (int) (maxY - minY + 1);
 
 		//Initializing grid/frame buffer
-		String[][] grid = initializeGrid(width, height);
+		String[][] grid = ObjectCoordinates(width, height);
 
 		// Plotting coordinates
 		for (Point point : Line) {
@@ -49,7 +49,40 @@ public class Plotter {
 		}
 	}
 
-	String[][] initializeGrid(int width, int height) {
+	String[][] ObjectCoordinates(int width, int height) {
+
+		String[][] grid = new String[width][height];
+
+		//Drawing background characters
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				grid[i][j] = ".";
+			}
+		}
+
+//		//Drawing ordinate & abscissa markings
+//		int centerX = width / 2;
+//		int centerY = height / 2;
+//		for (int j = 0; j < height; j++) {
+//			int value = centerY - j;
+//			if (value > 0)
+//				grid[centerX][j] = String.valueOf('|');
+//			if (value < 0)
+//				grid[centerX][j] = String.valueOf('|'); //Ordinate
+//		}
+//		for (int i = 0; i < width; i++) {
+//			int value = i - centerX;
+//			if (value > 0)
+//				grid[i][centerY] = String.valueOf("--");
+//			if (value < 0)
+//				grid[i][centerY] = String.valueOf("--"); //Abscissa
+//		}
+//		grid[centerX][centerY] = "+"; //Center
+
+		return grid;
+	}
+
+	String[][] WorldCoordinates(int width, int height) {
 
 		String[][] grid = new String[width][height];
 

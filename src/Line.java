@@ -23,22 +23,18 @@ public class Line {
 		Line.add(new Point(x1, y1)); //Adding starting point
 
 		//Initializing loop variables
-		int i = 1;
 		double x = x1;
 		double y = y1;
 
 		//Calculating line coordinates
-		while (i <= length) {
+		while (x != x2 || y != y2) {
 			x = x + xIncrement;
 			y = y + yIncrement;
 			Line.add(new Point(x, y));
-			i++;
 		}
 
-		//Instantiating new Plotter object
-		Plotter plotObj = new Plotter();
-
 		//Plotting the line using the coordinates calculated
+		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Line);
 		System.out.println();
 		plotObj.plotCoordinates(Line);
@@ -85,10 +81,8 @@ public class Line {
 			}
 		}
 
-		//Instantiating new Plotter object
-		Plotter plotObj = new Plotter();
-
 		//Plotting the line using the coordinates calculated
+		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Line);
 		System.out.println();
 		plotObj.plotCoordinates(Line);
@@ -98,15 +92,14 @@ public class Line {
 	//Bresenham's Line Drawing Algorithm
 	public void Bresenhams(int x1, int y1, int x2, int y2) {
 
-		//Calculating line length
+		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
 		int delY = Math.abs(y2 - y1);
-		int length = Math.max(delX, delY);
 
 		//Initializing the decision parameter
 		int decisionParameter = 2 * delY - delX;
 
-		//Deciding increment sign+values
+		//Deciding increment sign+values (-1, 0, 1)
 		int xIncrement = Integer.compare(x2, x1);
 		int yIncrement = Integer.compare(y2, y1);
 
@@ -115,12 +108,11 @@ public class Line {
 		Line.add(new Point(x1, y1)); //Adding starting point
 
 		//Initializing loop variables
-		int i = 1;
 		double x = x1;
 		double y = y1;
 
 		//Calculating line coordinates
-		while (i <= length) {
+		while (x != x2 || y != y2) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * delY;
@@ -129,13 +121,52 @@ public class Line {
 				decisionParameter += 2 * (delY - delX);
 			}
 			Line.add(new Point(x, y));
-			i++;
 		}
 
-		//Instantiating new Plotter object
+		//Plotting the line using the coordinates calculated
 		Plotter plotObj = new Plotter();
+		plotObj.printCoordinates(Line);
+		System.out.println();
+		plotObj.plotCoordinates(Line);
+
+	} //End Method
+
+	//Midpoint Line Drawing Algorithm
+	public void Midpoint(int x1, int y1, int x2, int y2) {
+
+		//Calculating delX & delY
+		int delX = Math.abs(x2 - x1);
+		int delY = Math.abs(y2 - y1);
+
+		//Initializing the decision parameter
+		int decisionParameter = delY - (delX / 2);
+
+		//Deciding increment sign+values (-1, 0, 1)
+		int xIncrement = Integer.compare(x2, x1);
+		int yIncrement = Integer.compare(y2, y1);
+
+		//Initializing point list for Line
+		List<Point> Line = new ArrayList<>();
+		Line.add(new Point(x1, y1)); //Adding starting point
+
+		//Initializing loop variables
+		double x = x1;
+		double y = y1;
+
+		//Calculating line coordinates
+		while (x != x2 || y != y2) {
+			x = x + xIncrement;
+			if (decisionParameter < 0) {
+				decisionParameter += delY;
+			} else {
+				y = y + yIncrement;
+				decisionParameter += (delY - delX);
+			}
+			Line.add(new Point(x, y));
+		}
 
 		//Plotting the line using the coordinates calculated
+		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Line);
 		System.out.println();
 		plotObj.plotCoordinates(Line);

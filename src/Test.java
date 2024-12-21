@@ -28,16 +28,20 @@ public class Test {
 			System.out.println();
 
 			//Calculating coordinates using SimpleDDA
-			newLine.SimpleDDA(x1, y1, x2, y2);
 			System.out.println("SimpleDDA");
+			newLine.SimpleDDA(x1, y1, x2, y2);
 
 			//Calculating coordinates using SymmetricalDDA
-			newLine.SymmetricalDDA(x1, y1, x2, y2);
 			System.out.println("SymmetricalDDA");
+			newLine.SymmetricalDDA(x1, y1, x2, y2);
 
 			//Calculating coordinates using Bresenham's
-			newLine.Bresenhams(x1, y1, x2, y2);
 			System.out.println("Bresenhams");
+			newLine.Bresenhams(x1, y1, x2, y2);
+
+			//Calculating coordinates using Midpoint
+			System.out.println("Midpoint");
+			newLine.Midpoint(x1, y1, x2, y2);
 
 			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
 		}
