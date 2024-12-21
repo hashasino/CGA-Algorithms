@@ -8,6 +8,21 @@ public class Plotter {
 		}
 	}
 
+	public void printCoordinates(List<Point> Circle, int radius) {
+
+		for (Point point : Circle) {
+			System.out.print("(" + point.x + "," + point.y + ") ");
+			System.out.print("(" + point.y + "," + point.x + ") ");
+			System.out.print("(" + point.y + "," + -point.x + ") ");
+			System.out.print("(" + point.x + "," + -point.y + ") ");
+			System.out.print("(" + -point.x + "," + -point.y + ") ");
+			System.out.print("(" + -point.y + "," + -point.x + ") ");
+			System.out.print("(" + -point.y + "," + point.x + ") ");
+			System.out.print("(" + -point.x + "," + point.y + ") ");
+			System.out.println();
+		}
+	}
+
 	public void plotCoordinates(List<Point> Line) {
 
 		//Setting initial min/max value
@@ -43,10 +58,42 @@ public class Plotter {
 		for (int j = 0; j < height; j++) {
 			for (int i = 0; i < width; i++) {
 				String cell = grid[i][j];
-				System.out.printf("%4s", cell);
+				System.out.printf("%3s", cell);
 			}
 			System.out.println();
 		}
+	}
+
+	public void plotCoordinates(List<Point> Circle, int radius) {
+
+		int diameter = 2 * radius;
+
+		//Initializing grid/frame buffer
+		String[][] grid = ObjectCoordinates(diameter + 1, diameter + 1);
+
+		// Plotting coordinates
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			grid[radius + X][radius - Y] = String.valueOf('*');
+			grid[radius + Y][radius - X] = String.valueOf('*');
+			grid[radius + Y][radius + X] = String.valueOf('*');
+			grid[radius + X][radius + Y] = String.valueOf('*');
+			grid[radius - X][radius + Y] = String.valueOf('*');
+			grid[radius - Y][radius + X] = String.valueOf('*');
+			grid[radius - Y][radius - X] = String.valueOf('*');
+			grid[radius - X][radius - Y] = String.valueOf('*');
+		}
+
+		// Displaying coordinate grid
+		for (int j = 0; j <= diameter; j++) {
+			for (int i = 0; i <= diameter; i++) {
+				String cell = grid[i][j];
+				System.out.printf("%3s", cell);
+			}
+			System.out.println();
+		}
+
 	}
 
 	String[][] ObjectCoordinates(int width, int height) {

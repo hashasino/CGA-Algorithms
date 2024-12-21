@@ -1,20 +1,13 @@
 
 //	Contains all Circle Drawing Algorithms
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Circle {
 
-	public static void main(String[] args) {
-		Circle newCircle = new Circle();
-		newCircle.DDA(6);
-	}
-
+	//DDA Circle Drawing Algorithm (gives hexagons tho, not circles)
 	public void DDA(int radius) {
-		/*
-		- Initialize x = 0, y = radius
-		- Find epsilon = 2^-n, where 2^(n-1) <= radius < 2^n
-		- While (x < y), x = x + epsilon * y, &  y = y - epsilon * x (in that exact order)
-		- Transpose the coordinate for all 8 octants (x,y), (y,x), (-x,y), (-y,x), (-x,-y), (-y,-x), (x,-y) & (y,-x)
-		 */
 
 		//Finding epsilon
 		int power = 0;
@@ -23,41 +16,25 @@ public class Circle {
 		}
 		double epsilon = Math.pow(2, -power);
 
-		int i = 0;
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
 
-		int[] x = new int[radius * 8];
-		x[0] = 0;
-		int[] y = new int[radius * 8];
-		y[0] = radius;
+		//Initializing loop variables
+		double x = 0;
+		double y = radius;
 
 		//Calculating the first octant
-		while (x[i] <= y[i]) {
-			++i;
-			x[i] = x[i - 1] + (int) Math.round(y[i - 1] * epsilon);
-			y[i] = y[i - 1] - (int) Math.round(x[i] * epsilon);
-
-			x[i + radius] = y[i];
-			x[i + radius * 2] = -x[i];
-			x[i + radius * 3] = -y[i];
-			x[i + radius * 4] = -x[i];
-			x[i + radius * 5] = -y[i];
-			x[i + radius * 6] = x[i];
-			x[i + radius * 7] = y[i];
-
-			y[i + radius] = x[i];
-			y[i + radius * 2] = y[i];
-			y[i + radius * 3] = x[i];
-			y[i + radius * 4] = -y[i];
-			y[i + radius * 5] = -x[i];
-			y[i + radius * 6] = -y[i];
-			y[i + radius * 7] = -x[i];
+		while (x <= y) {
+			Circle.add(new Point(x, y));
+			x = x + Math.round(y * epsilon);
+			y = y - Math.round(x * epsilon);
 		}
 
-		//Instantiating new Plotter object
+		//Plotting the Circle using the coordinates calculated
 		Plotter plotObj = new Plotter();
-
-		//Plotting the line using the coordinates calculated
-//		plotObj.printCoordinates(x, y, radius);
+		plotObj.printCoordinates(Circle, radius);
+		System.out.println();
+		plotObj.plotCoordinates(Circle, radius);
 	}
 
 	public void Bresenhams(int radius) {
