@@ -1,7 +1,7 @@
 package Algorithms; //Contains all Algorithms.Circle Drawing Algorithms
 
-import Base.Plotter;
 import Base.Point;
+import Base.Plotter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +31,10 @@ public class Circle {
 			y = y - Math.round(x * epsilon);
 		}
 
-		//Plotting the Algorithms.Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
+		//Plotting the Circle using the coordinates calculated
+		printCoordinates(Circle);
 		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
+		plotCoordinates(Circle, radius);
 	}
 
 	//Bresenham's Algorithms.Circle Drawing Algorithm
@@ -61,11 +60,10 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Algorithms.Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
+		//Plotting the Circle using the coordinates calculated
+		printCoordinates(Circle);
 		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
+		plotCoordinates(Circle, radius);
 
 	}
 
@@ -92,11 +90,10 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Algorithms.Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
+		//Plotting the Circle using the coordinates calculated
+		printCoordinates(Circle);
 		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
+		plotCoordinates(Circle, radius);
 
 	}
 
@@ -104,4 +101,56 @@ public class Circle {
 	public void Ellipse(int radiusOne, int radiusTwo) {
 
 	}
+
+	//To print the coordinates calculated
+	public void printCoordinates(List<Point> Circle) {
+
+		for (Point point : Circle) {
+			System.out.print("(" + point.x + "," + point.y + ") ");
+			System.out.print("(" + point.y + "," + point.x + ") ");
+			System.out.print("(" + point.y + "," + -point.x + ") ");
+			System.out.print("(" + point.x + "," + -point.y + ") ");
+			System.out.print("(" + -point.x + "," + -point.y + ") ");
+			System.out.print("(" + -point.y + "," + -point.x + ") ");
+			System.out.print("(" + -point.y + "," + point.x + ") ");
+			System.out.print("(" + -point.x + "," + point.y + ") ");
+			System.out.println();
+		}
+	}
+
+	//To plot the coordinates calculated
+	public void plotCoordinates(List<Point> Circle, int radius) {
+
+		int diameter = 2 * radius;
+
+		//Initializing grid/frame buffer
+		Plotter plotObj = new Plotter();
+		String[][] grid = plotObj.ObjectCoordinates(diameter + 1, diameter + 1);
+
+		// Plotting coordinates
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			grid[radius + X][radius - Y] = String.valueOf('*');
+			grid[radius + Y][radius - X] = String.valueOf('*');
+			grid[radius + Y][radius + X] = String.valueOf('*');
+			grid[radius + X][radius + Y] = String.valueOf('*');
+			grid[radius - X][radius + Y] = String.valueOf('*');
+			grid[radius - Y][radius + X] = String.valueOf('*');
+			grid[radius - Y][radius - X] = String.valueOf('*');
+			grid[radius - X][radius - Y] = String.valueOf('*');
+		}
+
+		// Displaying coordinate grid
+		for (int j = 0; j <= diameter; j++) {
+			for (int i = 0; i <= diameter; i++) {
+				String cell = grid[i][j];
+				System.out.printf("%3s", cell);
+			}
+			System.out.println();
+		}
+
+	}
+
+
 }

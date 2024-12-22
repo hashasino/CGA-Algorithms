@@ -28,7 +28,7 @@ public class Point {
 	}
 
 	//To get coordinate value as a string
-	String getCoordinates() {
+	public String getCoordinates() {
 		long x = Math.round(this.x);
 		long y = Math.round(this.y);
 		long z = Math.round(this.z);
