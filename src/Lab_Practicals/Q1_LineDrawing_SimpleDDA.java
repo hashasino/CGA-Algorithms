@@ -32,7 +32,7 @@ public class Q1_LineDrawing_SimpleDDA {
 		return x >= 0 && x < width && y >= 0 && y < height;
 	}
 
-	// 1. Digital Differential Analyzer (DDA) Line Drawing Algorithm
+	// 1. Digital Differential Analyzer (DDA) Algorithms.Line Drawing Algorithm
 	public void drawLineDDA(int x0, int y0, int x1, int y1) {
 		int dx = x1 - x0;
 		int dy = y1 - y0;
@@ -55,7 +55,7 @@ public class Q1_LineDrawing_SimpleDDA {
 		}
 	}
 
-	// 2. Bresenham's Line Drawing Algorithm
+	// 2. Bresenham's Algorithms.Line Drawing Algorithm
 	public void drawLineBresenham(int x0, int y0, int x1, int y1) {
 		int dx = Math.abs(x1 - x0);
 		int dy = Math.abs(y1 - y0);
@@ -82,7 +82,7 @@ public class Q1_LineDrawing_SimpleDDA {
 		}
 	}
 
-	// 3. Midpoint Line Drawing Algorithm
+	// 3. Midpoint Algorithms.Line Drawing Algorithm
 	public void drawLineMidpoint(int x0, int y0, int x1, int y1) {
 		int dx = Math.abs(x1 - x0);
 		int dy = Math.abs(y1 - y0);
@@ -145,16 +145,16 @@ public class Q1_LineDrawing_SimpleDDA {
 		}
 	}
 
-	// Main method with interactive interface
+	// Base.Main method with interactive interface
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Q1_LineDrawing_SimpleDDA display = new Q1_LineDrawing_SimpleDDA(40, 20);
 
 		while (true) {
-			System.out.println("\nRaster Graphics Line Drawing");
-			System.out.println("1. DDA Line Algorithm");
-			System.out.println("2. Bresenham Line Algorithm");
-			System.out.println("3. Midpoint Line Algorithm");
+			System.out.println("\nRaster Graphics Algorithms.Line Drawing");
+			System.out.println("1. DDA Algorithms.Line Algorithm");
+			System.out.println("2. Bresenham Algorithms.Line Algorithm");
+			System.out.println("3. Midpoint Algorithms.Line Algorithm");
 			System.out.println("4. Clear Display");
 			System.out.println("5. Exit");
 			System.out.print("Enter your choice: ");

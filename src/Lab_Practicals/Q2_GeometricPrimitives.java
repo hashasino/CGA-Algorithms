@@ -120,10 +120,10 @@ public class Q2_GeometricPrimitives {
 
 		while (true) {
 			System.out.println("\nGeometric Lab_Practicals.Primitives Drawing Program");
-			System.out.println("1. Draw Point");
-			System.out.println("2. Draw Line");
+			System.out.println("1. Draw Base.Point");
+			System.out.println("2. Draw Algorithms.Line");
 			System.out.println("3. Draw Rectangle");
-			System.out.println("4. Draw Circle");
+			System.out.println("4. Draw Algorithms.Circle");
 			System.out.println("5. Clear Canvas");
 			System.out.println("6. Exit");
 			System.out.print("Enter your choice: ");

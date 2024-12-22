@@ -47,7 +47,7 @@ public class Q3_PolygonFilling_Square {
 		}
 	}
 
-	// 2. Filled Square - Horizontal Scan Line Fill
+	// 2. Filled Square - Horizontal Scan Algorithms.Line Fill
 	public void drawSquareFillHorizontal(int topLeftX, int topLeftY, int size) {
 		for (int y = topLeftY; y < topLeftY + size; y++) {
 			for (int x = topLeftX; x < topLeftX + size; x++) {
@@ -56,7 +56,7 @@ public class Q3_PolygonFilling_Square {
 		}
 	}
 
-	// 3. Filled Square - Vertical Scan Line Fill
+	// 3. Filled Square - Vertical Scan Algorithms.Line Fill
 	public void drawSquareFillVertical(int topLeftX, int topLeftY, int size) {
 		for (int x = topLeftX; x < topLeftX + size; x++) {
 			for (int y = topLeftY; y < topLeftY + size; y++) {
@@ -107,7 +107,7 @@ public class Q3_PolygonFilling_Square {
 		}
 	}
 
-	// Main method with interactive interface
+	// Base.Main method with interactive interface
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Q3_PolygonFilling_Square display = new Q3_PolygonFilling_Square(40, 20);
@@ -115,8 +115,8 @@ public class Q3_PolygonFilling_Square {
 		while (true) {
 			System.out.println("\nRaster Graphics Square Drawing");
 			System.out.println("1. Square Outline");
-			System.out.println("2. Horizontal Scan Line Fill");
-			System.out.println("3. Vertical Scan Line Fill");
+			System.out.println("2. Horizontal Scan Algorithms.Line Fill");
+			System.out.println("3. Vertical Scan Algorithms.Line Fill");
 			System.out.println("4. Diagonal Pattern Fill");
 			System.out.println("5. Checkerboard Pattern Fill");
 			System.out.println("6. Clear Display");

@@ -1,7 +1,9 @@
+package Base;
+
 public class Point {
-	final double x;
-	final double y;
-	final double z;
+	public final double x;
+	public final double y;
+	public final double z;
 	char displayCharacter;
 	boolean flag = false;
 

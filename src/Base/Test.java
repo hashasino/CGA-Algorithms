@@ -1,15 +1,16 @@
+package Base;
+
+import Algorithms.*;
 import java.util.Scanner;
 
-public class Test {
-
+class Test {
 	public static void main(String[] args) {
 
-//		Test.LineDrawingAlgorithms();
+//		Base.Test.LineDrawingAlgorithms();
 
-//		Test.CircleDrawingAlgorithms();
+//		Base.Test.CircleDrawingAlgorithms();
 
 		Test.EllipseDrawingAlgorithms();
-
 	}
 
 	static void LineDrawingAlgorithms() {
@@ -21,7 +22,7 @@ public class Test {
 		//Instantiating a Scanner object to control output display for each coordinate pair step-by-step
 		Scanner scan = new Scanner(System.in);
 
-		//Instantiating a Line object to access required algorithms
+		//Instantiating an Algorithms.Line object to access required algorithms
 		Line newLine = new Line();
 
 		//Initiating test loop
@@ -65,7 +66,7 @@ public class Test {
 		//Instantiating a Scanner object to control output display for each coordinate pair step-by-step
 		Scanner scan = new Scanner(System.in);
 
-		//Instantiating a Circle object to access required algorithms
+		//Instantiating an Algorithms.Circle object to access required algorithms
 		Circle newCircle = new Circle();
 
 		//Initiating test loop
@@ -101,7 +102,7 @@ public class Test {
 		//Instantiating a Scanner object to control output display for each coordinate pair step-by-step
 		Scanner scan = new Scanner(System.in);
 
-		//Instantiating a Circle object to access required algorithms
+		//Instantiating an Algorithms.Circle object to access required algorithms
 		Circle newCircle = new Circle();
 
 		//Initiating test loop

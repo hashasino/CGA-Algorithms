@@ -1,6 +1,9 @@
+package Base;
+
+import Algorithms.*;
 import java.util.Scanner;
 
-public class Main {
+class Main {
 	public static void main(String[] args) {
 
 		//Initializing Scanner object
@@ -9,7 +12,7 @@ public class Main {
 		//Initializing LineDDA object
 		Line newLine = new Line();
 
-		//Initializing Circle object
+		//Initializing Algorithms.Circle object
 		Circle newCircle = new Circle();
 
 		//Initializing condition variables
@@ -19,12 +22,12 @@ public class Main {
 		//Starting program loop
 		do {
 			System.out.println("\nChoose an algorithm:");
-			System.out.println("  1. Line, Simple DDA");
-			System.out.println("  2. Line, Symmetrical DDA");
-			System.out.println("  3. Line, Bresenham's");
-			System.out.println("  4. Circle, DDA");
-			System.out.println("  5. Circle, Bresenham's");
-			System.out.println("  6. Circle, Mid Point");
+			System.out.println("  1. Algorithms.Line, Simple DDA");
+			System.out.println("  2. Algorithms.Line, Symmetrical DDA");
+			System.out.println("  3. Algorithms.Line, Bresenham's");
+			System.out.println("  4. Algorithms.Circle, DDA");
+			System.out.println("  5. Algorithms.Circle, Bresenham's");
+			System.out.println("  6. Algorithms.Circle, Mid Base.Point");
 			System.out.println("  0. Exit program");
 
 			//Taking input to decide choice of algorithm
@@ -34,27 +37,27 @@ public class Main {
 
 				switch (choice) {
 					case 1:
-						System.out.println("Algorithm: Line, Simple DDA");
+						System.out.println("Algorithm: Algorithms.Line, Simple DDA");
 						condition = false;
 						break;
 					case 2:
-						System.out.println("Algorithm: Line, Symmetrical DDA");
+						System.out.println("Algorithm: Algorithms.Line, Symmetrical DDA");
 						condition = false;
 						break;
 					case 3:
-						System.out.println("Algorithm: Line, Bresenham's");
+						System.out.println("Algorithm: Algorithms.Line, Bresenham's");
 						condition = false;
 						break;
 					case 4:
-						System.out.println("Algorithm: Circle, DDA");
+						System.out.println("Algorithm: Algorithms.Circle, DDA");
 						condition = false;
 						break;
 					case 5:
-						System.out.println("Algorithm: Circle, Bresenham's");
+						System.out.println("Algorithm: Algorithms.Circle, Bresenham's");
 						condition = false;
 						break;
 					case 6:
-						System.out.println("Algorithm: Circle, Mid Point");
+						System.out.println("Algorithm: Algorithms.Circle, Mid Base.Point");
 						condition = false;
 						break;
 					case 0:
@@ -72,7 +75,7 @@ public class Main {
 			int y2 = scan.nextInt();
 
 			//Executing chosen algorithm
-			System.out.println("  Line coordinates:");
+			System.out.println("  Algorithms.Line coordinates:");
 			switch (choice) {
 				case 1:
 					newLine.SimpleDDA(x1, y1, x2, y2);

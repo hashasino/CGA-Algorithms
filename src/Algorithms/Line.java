@@ -1,12 +1,13 @@
+package Algorithms; //Contains all line drawing algorithms
 
-//	Contains all line drawing algorithms
-
+import Base.Plotter;
+import Base.Point;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Line {
 
-	//SimpleDDA Line Drawing Algorithm
+	//SimpleDDA Algorithms.Line Drawing Algorithm
 	public void SimpleDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
@@ -18,7 +19,7 @@ public class Line {
 		double xIncrement = (double) delX / length;
 		double yIncrement = (double) delY / length;
 
-		//Initializing point list for Line
+		//Initializing point list for Algorithms.Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 
@@ -41,7 +42,7 @@ public class Line {
 
 	} //End Method
 
-	//SymmetricalDDA Line Drawing Algorithm
+	//SymmetricalDDA Algorithms.Line Drawing Algorithm
 	public void SymmetricalDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
@@ -57,7 +58,7 @@ public class Line {
 		double xIncrement = (double) delX / length;
 		double yIncrement = (double) delY / length;
 
-		//Initializing point list for Line
+		//Initializing point list for Algorithms.Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding first point
 
@@ -89,7 +90,7 @@ public class Line {
 
 	} //End Method
 
-	//Bresenham's Line Drawing Algorithm
+	//Bresenham's Algorithms.Line Drawing Algorithm
 	public void Bresenhams(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
@@ -103,7 +104,7 @@ public class Line {
 		int xIncrement = Integer.compare(x2, x1);
 		int yIncrement = Integer.compare(y2, y1);
 
-		//Initializing point list for Line
+		//Initializing point list for Algorithms.Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 
@@ -131,7 +132,7 @@ public class Line {
 
 	} //End Method
 
-	//Midpoint Line Drawing Algorithm
+	//Midpoint Algorithms.Line Drawing Algorithm
 	public void Midpoint(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
@@ -145,7 +146,7 @@ public class Line {
 		int xIncrement = Integer.compare(x2, x1);
 		int yIncrement = Integer.compare(y2, y1);
 
-		//Initializing point list for Line
+		//Initializing point list for Algorithms.Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 

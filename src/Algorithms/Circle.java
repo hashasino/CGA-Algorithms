@@ -1,12 +1,13 @@
+package Algorithms; //Contains all Algorithms.Circle Drawing Algorithms
 
-//	Contains all Circle Drawing Algorithms
-
+import Base.Plotter;
+import Base.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Circle {
 
-	//DDA Circle Drawing Algorithm (gives hexagons tho, not circles)
+	//DDA Algorithms.Circle Drawing Algorithm (gives hexagons tho, not circles)
 	public void DDA(int radius) {
 
 		//Finding epsilon
@@ -16,7 +17,7 @@ public class Circle {
 		}
 		double epsilon = Math.pow(2, -power);
 
-		//Initializing point list for Circle
+		//Initializing point list for Algorithms.Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -30,17 +31,17 @@ public class Circle {
 			y = y - Math.round(x * epsilon);
 		}
 
-		//Plotting the Circle using the coordinates calculated
+		//Plotting the Algorithms.Circle using the coordinates calculated
 		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Circle, radius);
 		System.out.println();
 		plotObj.plotCoordinates(Circle, radius);
 	}
 
-	//Bresenham's Circle Drawing Algorithm
+	//Bresenham's Algorithms.Circle Drawing Algorithm
 	public void Bresenhams(int radius) {
 
-		//Initializing point list for Circle
+		//Initializing point list for Algorithms.Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -60,7 +61,7 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Circle using the coordinates calculated
+		//Plotting the Algorithms.Circle using the coordinates calculated
 		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Circle, radius);
 		System.out.println();
@@ -68,10 +69,10 @@ public class Circle {
 
 	}
 
-	//Midpoint Circle Drawing Algorithm
+	//Midpoint Algorithms.Circle Drawing Algorithm
 	public void MidPoint(int radius) {
 
-		//Initializing point list for Circle
+		//Initializing point list for Algorithms.Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -91,7 +92,7 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Circle using the coordinates calculated
+		//Plotting the Algorithms.Circle using the coordinates calculated
 		Plotter plotObj = new Plotter();
 		plotObj.printCoordinates(Circle, radius);
 		System.out.println();
