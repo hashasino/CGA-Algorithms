@@ -4,6 +4,7 @@ package Lab_Practicals;
 
 import Base.Plotter;
 import Base.Point;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -28,17 +29,33 @@ public class Q4_CircleDrawing_Bresenhams {
 			radii[i] = scan.nextInt();
 		}
 
+		//Finding maximum of the radii
+		int max = 0;
+		for (int radius : radii) {
+			if (max < radius) max = radius;
+		}
+
+		//Instantiating Plotter object
+		Plotter plotObj = new Plotter(max * 2 + 1, max * 2 + 1);
+
+		//Initializing point list to store points generated
+		List<Point> Circle;
+
 		//Drawing circles
 		for (int i = 0; i < circle; i++) {
 			System.out.println("\n" + (i + 1) + ". Radius = " + radii[i] + "\n");
-			Bresenhams(radii[i]);
+			Circle = Bresenhams(radii[i]);
+			plotObj.WorldPlotCircle(Circle, '*');
 		}
+
+		//Displaying circles
+		plotObj.WorldDisplay();
 	}
 
 	//Bresenham's Circle Drawing Algorithm
-	static void Bresenhams(int radius) {
+	static List<Point> Bresenhams(int radius) {
 
-		//Initializing point list for Algorithms.Circle
+		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -58,10 +75,7 @@ public class Q4_CircleDrawing_Bresenhams {
 			}
 		}
 
-		//Plotting the Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.plotCoordinates(Circle, radius);
-
+		return Circle;
 	}
 
 }

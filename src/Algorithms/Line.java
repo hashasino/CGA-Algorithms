@@ -1,14 +1,13 @@
-package Algorithms; //Contains all line drawing algorithms
+package Algorithms;
 
 import Base.Point;
-import Base.Plotter;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Line {
+public class Line { //Contains all Line Drawing Algorithms
 
-	//SimpleDDA Algorithms.Line Drawing Algorithm
-	public void SimpleDDA(int x1, int y1, int x2, int y2) {
+	//SimpleDDA Line Drawing Algorithm
+	public List<Point> SimpleDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
 		int delX = x2 - x1;
@@ -19,7 +18,7 @@ public class Line {
 		double xIncrement = (double) delX / length;
 		double yIncrement = (double) delY / length;
 
-		//Initializing point list for Algorithms.Line
+		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 
@@ -34,17 +33,13 @@ public class Line {
 			Line.add(new Point(x, y));
 		}
 
-		//Plotting the line using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Line);
-		System.out.println();
-		plotObj.plotCoordinates(Line);
+		return Line;
 
 	} //End Method
 
 	//TODO - Generates extra points that are not on the line when slope is -1.
-	//SymmetricalDDA Algorithms.Line Drawing Algorithm
-	public void SymmetricalDDA(int x1, int y1, int x2, int y2) {
+	//SymmetricalDDA Line Drawing Algorithm
+	public List<Point> SymmetricalDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
 		int delX = x2 - x1;
@@ -59,7 +54,7 @@ public class Line {
 		double xIncrement = (double) delX / length;
 		double yIncrement = (double) delY / length;
 
-		//Initializing point list for Algorithms.Line
+		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding first point
 
@@ -83,16 +78,12 @@ public class Line {
 			}
 		}
 
-		//Plotting the line using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Line);
-		System.out.println();
-		plotObj.plotCoordinates(Line);
+		return Line;
 
 	} //End Method
 
-	//Bresenham's Algorithms.Line Drawing Algorithm
-	public void Bresenhams(int x1, int y1, int x2, int y2) {
+	//Bresenham's Line Drawing Algorithm
+	public List<Point> Bresenhams(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
@@ -105,7 +96,7 @@ public class Line {
 		int xIncrement = Integer.compare(x2, x1);
 		int yIncrement = Integer.compare(y2, y1);
 
-		//Initializing point list for Algorithms.Line
+		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 
@@ -125,16 +116,12 @@ public class Line {
 			Line.add(new Point(x, y));
 		}
 
-		//Plotting the line using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Line);
-		System.out.println();
-		plotObj.plotCoordinates(Line);
+		return Line;
 
 	} //End Method
 
-	//Midpoint Algorithms.Line Drawing Algorithm
-	public void Midpoint(int x1, int y1, int x2, int y2) {
+	//Midpoint Line Drawing Algorithm
+	public List<Point> Midpoint(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
@@ -147,7 +134,7 @@ public class Line {
 		int xIncrement = Integer.compare(x2, x1);
 		int yIncrement = Integer.compare(y2, y1);
 
-		//Initializing point list for Algorithms.Line
+		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 		Line.add(new Point(x1, y1)); //Adding starting point
 
@@ -167,11 +154,7 @@ public class Line {
 			Line.add(new Point(x, y));
 		}
 
-		//Plotting the line using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Line);
-		System.out.println();
-		plotObj.plotCoordinates(Line);
+		return Line;
 
 	} //End Method
 

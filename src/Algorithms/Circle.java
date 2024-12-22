@@ -1,14 +1,13 @@
-package Algorithms; //Contains all Algorithms.Circle Drawing Algorithms
+package Algorithms;
 
 import Base.Point;
-import Base.Plotter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Circle {
+public class Circle { //Contains all Circle Drawing Algorithms
 
-	//DDA Algorithms.Circle Drawing Algorithm (gives hexagons tho, not circles)
-	public void DDA(int radius) {
+	//DDA Circle Drawing Algorithm (gives hexagons tho, not circles)
+	public List<Point> DDA(int radius) {
 
 		//Finding epsilon
 		int power = 0;
@@ -17,7 +16,7 @@ public class Circle {
 		}
 		double epsilon = Math.pow(2, -power);
 
-		//Initializing point list for Algorithms.Circle
+		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -31,17 +30,13 @@ public class Circle {
 			y = y - Math.round(x * epsilon);
 		}
 
-		//Plotting the Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
-		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
+		return Circle;
 	}
 
-	//Bresenham's Algorithms.Circle Drawing Algorithm
-	public void Bresenhams(int radius) {
+	//Bresenham's Circle Drawing Algorithm
+	public List<Point> Bresenhams(int radius) {
 
-		//Initializing point list for Algorithms.Circle
+		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -61,18 +56,13 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
-		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
-
+		return Circle;
 	}
 
-	//Midpoint Algorithms.Circle Drawing Algorithm
-	public void MidPoint(int radius) {
+	//Midpoint Circle Drawing Algorithm
+	public List<Point> MidPoint(int radius) {
 
-		//Initializing point list for Algorithms.Circle
+		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -92,12 +82,7 @@ public class Circle {
 			}
 		}
 
-		//Plotting the Circle using the coordinates calculated
-		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Circle, radius);
-		System.out.println();
-		plotObj.plotCoordinates(Circle, radius);
-
+		return Circle;
 	}
 
 	//Midpoint Ellipse Drawing Algorithm

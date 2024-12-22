@@ -1,6 +1,6 @@
 package Base;
 
-public class Point {
+public class Point { //The basic point class/blueprint
 	public final double x;
 	public final double y;
 	public final double z;
@@ -20,11 +20,6 @@ public class Point {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-	}
-
-	//To set & modify display character
-	void setCharacter(char character) {
-		displayCharacter = character;
 	}
 
 	//To get coordinate value as a string

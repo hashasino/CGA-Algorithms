@@ -2,10 +2,25 @@ package Base;
 
 import java.util.List;
 
-public class Plotter {
+public class Plotter { //Contains methods to print & plot objects
+	private final int width;
+	private final int height;
+	private final String[][] World;
+
+	public Plotter() {
+		this.width = 39;
+		this.height = 39;
+		this.World = WorldGrid(width, height);
+	}
+
+	public Plotter(int width, int height) {
+		this.width = width;
+		this.height = height;
+		this.World = WorldGrid(width, height);
+	}
 
 	//To initialize grid for plotting a single object
-	public String[][] ObjectCoordinates(int width, int height) {
+	private String[][] ObjectGrid(int width, int height) {
 
 		//Initializing grid/frame buffer
 		String[][] grid = new String[width][height];
@@ -37,12 +52,12 @@ public class Plotter {
 		return grid;
 	}
 
-	//To initialize grid to plot multiple objects i.e. the world
-	public String[][] WorldCoordinates(int width, int height) {
+	//To initialize grid for plotting multiple objects
+	private String[][] WorldGrid(int width, int height) {
 
 		String[][] grid = new String[width][height];
 
-		//Drawing background characters
+		//Initializing grid/frame buffer
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				grid[i][j] = ".";
@@ -66,13 +81,13 @@ public class Plotter {
 	}
 
 	//To print & plot Line
-	public void printCoordinates(List<Point> Line) {
+	public void printLine(List<Point> Line) {
 		for (Point point : Line) {
 			System.out.print(point.getCoordinates() + ' ');
 		}
 	}
 
-	public void plotCoordinates(List<Point> Line) {
+	public void plotLine(List<Point> Line, char character) {
 
 		//Setting initial min/max value
 		double minX = Double.MAX_VALUE;
@@ -94,14 +109,14 @@ public class Plotter {
 
 		//Initializing grid/frame buffer
 		Plotter plotObj = new Plotter();
-		String[][] grid = plotObj.ObjectCoordinates(width, height);
+		String[][] grid = plotObj.ObjectGrid(width, height);
 
 		// Plotting coordinates
 		for (Point point : Line) {
 			int X = (int) (Math.round(point.x - minX) + 1);
 			int Y = (int) (Math.round(point.y - minY) + 1);
 
-			grid[X - 1][height - Y] = String.valueOf('*');
+			grid[X - 1][height - Y] = String.valueOf(character);
 		}
 
 		// Displaying coordinate grid
@@ -115,41 +130,43 @@ public class Plotter {
 	}
 
 	//To print & plot Circle
-	public void printCoordinates(List<Point> Circle, int radius) {
+	public void printCircle(List<Point> Circle) {
 
 		for (Point point : Circle) {
-			System.out.print("(" + point.x + "," + point.y + ") ");
-			System.out.print("(" + point.y + "," + point.x + ") ");
-			System.out.print("(" + point.y + "," + -point.x + ") ");
-			System.out.print("(" + point.x + "," + -point.y + ") ");
-			System.out.print("(" + -point.x + "," + -point.y + ") ");
-			System.out.print("(" + -point.y + "," + -point.x + ") ");
-			System.out.print("(" + -point.y + "," + point.x + ") ");
-			System.out.print("(" + -point.x + "," + point.y + ") ");
+			int X = (int) Math.round(point.x);
+			int Y = (int) Math.round(point.y);
+			System.out.print("(" + X + "," + Y + ") ");
+			System.out.print("(" + Y + "," + X + ") ");
+			System.out.print("(" + Y + "," + -X + ") ");
+			System.out.print("(" + X + "," + -Y + ") ");
+			System.out.print("(" + -X + "," + -Y + ") ");
+			System.out.print("(" + -Y + "," + -X + ") ");
+			System.out.print("(" + -Y + "," + X + ") ");
+			System.out.print("(" + -X + "," + Y + ") ");
 			System.out.println();
 		}
 	}
 
-	public void plotCoordinates(List<Point> Circle, int radius) {
+	public void plotCircle(List<Point> Circle, int radius, char character) {
 
 		int diameter = 2 * radius;
 
 		//Initializing grid/frame buffer
 		Plotter plotObj = new Plotter();
-		String[][] grid = plotObj.ObjectCoordinates(diameter + 1, diameter + 1);
+		String[][] grid = plotObj.ObjectGrid(diameter + 1, diameter + 1);
 
 		// Plotting coordinates
 		for (Point point : Circle) {
 			int X = (int) (Math.round(point.x));
 			int Y = (int) (Math.round(point.y));
-			grid[radius + X][radius - Y] = String.valueOf('*');
-			grid[radius + Y][radius - X] = String.valueOf('*');
-			grid[radius + Y][radius + X] = String.valueOf('*');
-			grid[radius + X][radius + Y] = String.valueOf('*');
-			grid[radius - X][radius + Y] = String.valueOf('*');
-			grid[radius - Y][radius + X] = String.valueOf('*');
-			grid[radius - Y][radius - X] = String.valueOf('*');
-			grid[radius - X][radius - Y] = String.valueOf('*');
+			grid[radius + X][radius - Y] = String.valueOf(character);
+			grid[radius + Y][radius - X] = String.valueOf(character);
+			grid[radius + Y][radius + X] = String.valueOf(character);
+			grid[radius + X][radius + Y] = String.valueOf(character);
+			grid[radius - X][radius + Y] = String.valueOf(character);
+			grid[radius - Y][radius + X] = String.valueOf(character);
+			grid[radius - Y][radius - X] = String.valueOf(character);
+			grid[radius - X][radius - Y] = String.valueOf(character);
 		}
 
 		// Displaying coordinate grid
@@ -163,8 +180,47 @@ public class Plotter {
 
 	}
 
-	//To plot everything, everywhere, all at once
-	public void WorldPlotter() {
+	//To plot (everything, everywhere, all) objects in the WorldGrid
+	public void WorldPlotLine(List<Point> Line, char character) {
+
+		int centerX = width / 2;
+		int centerY = height / 2;
+
+		for (Point point : Line) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			World[centerX + X][centerY - Y] = String.valueOf(character);
+		}
+	}
+
+	public void WorldPlotCircle(List<Point> Circle, char character) {
+
+		int centerX = width / 2;
+		int centerY = height / 2;
+
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			World[centerX + X][centerY - Y] = String.valueOf(character);
+			World[centerX + Y][centerY - X] = String.valueOf(character);
+			World[centerX + Y][centerY + X] = String.valueOf(character);
+			World[centerX + X][centerY + Y] = String.valueOf(character);
+			World[centerX - X][centerY + Y] = String.valueOf(character);
+			World[centerX - Y][centerY + X] = String.valueOf(character);
+			World[centerX - Y][centerY - X] = String.valueOf(character);
+			World[centerX - X][centerY - Y] = String.valueOf(character);
+		}
+	}
+
+	//To display the World Grid
+	public void WorldDisplay() {
+		for (int j = 0; j < height; j++) {
+			for (int i = 0; i < width; i++) {
+				String cell = World[i][j];
+				System.out.printf("%4s", cell);
+			}
+			System.out.println();
+		}
 	}
 
 }

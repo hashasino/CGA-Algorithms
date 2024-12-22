@@ -58,8 +58,8 @@ public class Q5_LineDrawing_Midpoint {
 
 		//Plotting the line using the coordinates calculated
 		Plotter plotObj = new Plotter();
-		plotObj.printCoordinates(Line);
+		plotObj.printLine(Line);
 		System.out.println();
-		plotObj.plotCoordinates(Line);
+		plotObj.plotLine(Line, '*');
 	}
 }
