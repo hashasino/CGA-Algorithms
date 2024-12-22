@@ -7,6 +7,9 @@ public class Test {
 //		Test.LineDrawingAlgorithms();
 
 //		Test.CircleDrawingAlgorithms();
+
+		Test.EllipseDrawingAlgorithms();
+
 	}
 
 	static void LineDrawingAlgorithms() {
@@ -75,20 +78,49 @@ public class Test {
 			System.out.println("\n" + i + ". Radius = " + radius);
 			System.out.println();
 
-			//Calculating line using DDA
+			//Calculating circle using DDA
 			System.out.println("DDA");
 			newCircle.DDA(radius);
 
-			//Calculating line using Bresenham's
+			//Calculating circle using Bresenham's
 			System.out.println("Bresenham's");
 			newCircle.Bresenhams(radius);
 
-			//Calculating line using Midpoint
+			//Calculating circle using Midpoint
 			System.out.println("Midpoint");
 			newCircle.MidPoint(radius);
 
-			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
+			scan.nextLine(); //Waiting for user input to move on to the next iteration
 		}
 	}
+
+	static void EllipseDrawingAlgorithms() {
+		//Creating a list of radii to test
+		int[][] Radii_Pairs = {{6, 12, 18}, {9, 18, 27}};
+
+		//Instantiating a Scanner object to control output display for each coordinate pair step-by-step
+		Scanner scan = new Scanner(System.in);
+
+		//Instantiating a Circle object to access required algorithms
+		Circle newCircle = new Circle();
+
+		//Initiating test loop
+		for (int i = 0; i < 3; i++) {
+
+			//Assigning current radius
+			int radiusOne = Radii_Pairs[0][i];
+			int radiusTwo = Radii_Pairs[1][i];
+
+			//Displaying current radii pair
+			System.out.println("\n" + i + ". Radius 1 = " + radiusOne + ", Radius 2 = " + radiusTwo);
+			System.out.println();
+
+			//Calculating ellipse using Midpoint
+			System.out.println("Ellipse");
+			newCircle.Ellipse(radiusOne, radiusTwo);
+
+			scan.nextLine(); //Waiting for user input to move on to the next iteration
+		}
+		}
 
 }

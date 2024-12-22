@@ -68,7 +68,7 @@ public class Circle {
 
 	}
 
-	//Bresenham's Circle Drawing Algorithm
+	//Midpoint Circle Drawing Algorithm
 	public void MidPoint(int radius) {
 
 		//Initializing point list for Circle
@@ -96,6 +96,11 @@ public class Circle {
 		plotObj.printCoordinates(Circle, radius);
 		System.out.println();
 		plotObj.plotCoordinates(Circle, radius);
+
+	}
+
+	//Midpoint Ellipse Drawing Algorithm
+	public void Ellipse(int radiusOne, int radiusTwo) {
 
 	}
 }
