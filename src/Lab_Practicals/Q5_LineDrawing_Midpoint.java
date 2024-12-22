@@ -9,7 +9,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Q5_LineDrawing_Midpoint {
-
 	public static void main(String[] args) {
 
 		//Program Declaration

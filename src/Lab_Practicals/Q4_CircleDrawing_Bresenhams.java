@@ -2,9 +2,8 @@ package Lab_Practicals;
 
 // Q4. Write a program to display a series of concentric circles of varying radius.
 
-import Base.Plotter;
 import Base.Point;
-
+import Base.Plotter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -39,43 +38,31 @@ public class Q4_CircleDrawing_Bresenhams {
 		Plotter plotObj = new Plotter(max * 2 + 1, max * 2 + 1);
 
 		//Initializing point list to store points generated
-		List<Point> Circle;
+		List<Point> Circle = new ArrayList<>();
 
 		//Drawing circles
 		for (int i = 0; i < circle; i++) {
 			System.out.println("\n" + (i + 1) + ". Radius = " + radii[i] + "\n");
-			Circle = Bresenhams(radii[i]);
+			//Initializing loop variables
+			int x = 0;
+			int y = radii[i];
+			int decisionParameter = 3 - 2 * radii[i];
+
+			//Calculating the first octant
+			while (x <= y) {
+				Circle.add(new Point(x, y));
+				x++;
+				if (decisionParameter < 0) {
+					decisionParameter += 4 * x + 6;
+				} else {
+					y--;
+					decisionParameter += 4 * (x - y) + 10;
+				}
+			}
 			plotObj.WorldPlotCircle(Circle, '*');
 		}
 
 		//Displaying circles
 		plotObj.WorldDisplay();
 	}
-
-	//Bresenham's Circle Drawing Algorithm
-	static List<Point> Bresenhams(int radius) {
-
-		//Initializing point list for Circle
-		List<Point> Circle = new ArrayList<>();
-
-		//Initializing loop variables
-		int x = 0;
-		int y = radius;
-		int decisionParameter = 3 - 2 * radius;
-
-		//Calculating the first octant
-		while (x <= y) {
-			Circle.add(new Point(x, y));
-			x++;
-			if (decisionParameter < 0) {
-				decisionParameter += 4 * x + 6;
-			} else {
-				y--;
-				decisionParameter += 4 * (x - y) + 10;
-			}
-		}
-
-		return Circle;
-	}
-
 }
