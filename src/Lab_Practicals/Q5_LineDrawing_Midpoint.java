@@ -1,6 +1,6 @@
 package Lab_Practicals;
 
-// Q1. Write a program for 2D line drawing as Raster Graphics Display.
+// Q5. Write a program for line drawing as Raster Graphics Display.
 
 import Base.Point;
 import Base.Plotter;
@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Q1_LineDrawing_SimpleDDA {
+public class Q5_LineDrawing_Midpoint {
 
 	public static void main(String[] args) {
 
 		//Program Declaration
-		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using DDA Line Drawing Algorithm.");
+		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using Midpoint Line Drawing Algorithm.");
 
 		//Initializing Scanner object
 		Scanner scan = new Scanner(System.in);
@@ -25,14 +25,16 @@ public class Q1_LineDrawing_SimpleDDA {
 		int x2 = scan.nextInt();
 		int y2 = scan.nextInt();
 
-		//Calculating line length
-		int delX = x2 - x1;
-		int delY = y2 - y1;
-		int length = Math.max(Math.abs(delX), Math.abs(delY));
+		//Calculating delX & delY
+		int delX = Math.abs(x2 - x1);
+		int delY = Math.abs(y2 - y1);
 
-		// Calculating increment values
-		double xIncrement = (double) delX / length;
-		double yIncrement = (double) delY / length;
+		//Initializing the decision parameter
+		int decisionParameter = delY - (delX / 2);
+
+		//Deciding increment sign+values (-1, 0, 1)
+		int xIncrement = Integer.compare(x2, x1);
+		int yIncrement = Integer.compare(y2, y1);
 
 		//Initializing point list for Algorithms.Line
 		List<Point> Line = new ArrayList<>();
@@ -43,9 +45,14 @@ public class Q1_LineDrawing_SimpleDDA {
 		double y = y1;
 
 		//Calculating line coordinates
-		for (int i = 0; i < length; i++) {
+		while (x != x2 || y != y2) {
 			x = x + xIncrement;
-			y = y + yIncrement;
+			if (decisionParameter < 0) {
+				decisionParameter += delY;
+			} else {
+				y = y + yIncrement;
+				decisionParameter += (delY - delX);
+			}
 			Line.add(new Point(x, y));
 		}
 
@@ -55,5 +62,4 @@ public class Q1_LineDrawing_SimpleDDA {
 		System.out.println();
 		plotObj.plotCoordinates(Line);
 	}
-
 }
