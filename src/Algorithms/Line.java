@@ -37,7 +37,7 @@ public class Line { //Contains all Line Drawing Algorithms
 
 	} //End Method
 
-	//TODO - Generates extra points that are not on the line when slope is -1.
+	//TODO - Generates extra points that are not on the line when slope is -1
 	//SymmetricalDDA Line Drawing Algorithm
 	public List<Point> SymmetricalDDA(int x1, int y1, int x2, int y2) {
 

@@ -4,7 +4,6 @@ package Lab_Practicals;
 
 import Base.Point;
 import Base.Plotter;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
