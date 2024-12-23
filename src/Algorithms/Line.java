@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Line { //Contains all Line Drawing Algorithms
 
 	//SimpleDDA Line Drawing Algorithm
-	public List<Point> SimpleDDA(int x1, int y1, int x2, int y2) {
+	public static List<Point> SimpleDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
 		int delX = x2 - x1;
@@ -39,7 +39,7 @@ public class Line { //Contains all Line Drawing Algorithms
 
 	//TODO - Generates extra points that are not on the line when slope is -1
 	//SymmetricalDDA Line Drawing Algorithm
-	public List<Point> SymmetricalDDA(int x1, int y1, int x2, int y2) {
+	public static List<Point> SymmetricalDDA(int x1, int y1, int x2, int y2) {
 
 		//Calculating line length
 		int delX = x2 - x1;
@@ -82,7 +82,7 @@ public class Line { //Contains all Line Drawing Algorithms
 	} //End Method
 
 	//Bresenham's Line Drawing Algorithm
-	public List<Point> Bresenhams(int x1, int y1, int x2, int y2) {
+	public static List<Point> Bresenhams(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
@@ -137,7 +137,7 @@ public class Line { //Contains all Line Drawing Algorithms
 	} //End Method
 
 	//Midpoint Line Drawing Algorithm
-	public List<Point> Midpoint(int x1, int y1, int x2, int y2) {
+	public static List<Point> Midpoint(int x1, int y1, int x2, int y2) {
 
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);

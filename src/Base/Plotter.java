@@ -7,13 +7,6 @@ public class Plotter { //Contains methods to print & plot objects
 	private final int height;
 	private final String[][] World;
 
-	//TODO - You should probably remove the default constructor and modify all it usages to the other one
-	public Plotter() {
-		this.width = 39;
-		this.height = 39;
-		this.World = WorldGrid(width, height);
-	}
-
 	public Plotter(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -21,7 +14,7 @@ public class Plotter { //Contains methods to print & plot objects
 	}
 
 	//To initialize grid for plotting a single object
-	private String[][] ObjectGrid(int width, int height) {
+	private static String[][] ObjectGrid(int width, int height) {
 
 		//Initializing grid/frame buffer
 		String[][] grid = new String[width][height];
@@ -82,13 +75,13 @@ public class Plotter { //Contains methods to print & plot objects
 	}
 
 	//To print & plot Line
-	public void printLine(List<Point> Line) {
+	public static void printLine(List<Point> Line) {
 		for (Point point : Line) {
 			System.out.print(point.getCoordinates() + ' ');
 		}
 	}
 
-	public void plotLine(List<Point> Line, char character) {
+	public static void plotLine(List<Point> Line, char character) {
 
 		//Setting initial min/max value
 		double minX = Double.MAX_VALUE;
@@ -109,8 +102,7 @@ public class Plotter { //Contains methods to print & plot objects
 		int height = (int) (maxY - minY + 1);
 
 		//Initializing grid/frame buffer
-		Plotter plotObj = new Plotter();
-		String[][] grid = plotObj.ObjectGrid(width, height);
+		String[][] grid = Plotter.ObjectGrid(width, height);
 
 		// Plotting coordinates
 		for (Point point : Line) {
@@ -131,7 +123,7 @@ public class Plotter { //Contains methods to print & plot objects
 	}
 
 	//To print & plot Circle
-	public void printCircle(List<Point> Circle) {
+	public static void printCircle(List<Point> Circle) {
 
 		for (Point point : Circle) {
 			int X = (int) Math.round(point.x);
@@ -148,13 +140,12 @@ public class Plotter { //Contains methods to print & plot objects
 		}
 	}
 
-	public void plotCircle(List<Point> Circle, int radius, char character) {
+	public static void plotCircle(List<Point> Circle, int radius, char character) {
 
 		int diameter = 2 * radius;
 
 		//Initializing grid/frame buffer
-		Plotter plotObj = new Plotter();
-		String[][] grid = plotObj.ObjectGrid(diameter + 1, diameter + 1);
+		String[][] grid = Plotter.ObjectGrid(diameter + 1, diameter + 1);
 
 		// Plotting coordinates
 		for (Point point : Circle) {

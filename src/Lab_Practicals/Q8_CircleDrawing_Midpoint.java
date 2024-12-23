@@ -24,9 +24,6 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 		//Initializing point list to store points generated
 		List<Point> Circle = new ArrayList<>();
 
-		//Instantiating Plotter object
-		Plotter plotObj = new Plotter(radius * 2 + 1, radius * 2 + 1);
-
 		//Initializing loop variables
 		int x = 0;
 		int y = radius;
@@ -45,6 +42,6 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 		}
 
 		//Plotting the circle
-		plotObj.plotCircle(Circle, radius, 'o');
+		Plotter.plotCircle(Circle, radius, 'o');
 	}
 }

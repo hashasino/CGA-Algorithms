@@ -27,9 +27,6 @@ public class Q1_LineDrawing_SimpleDDA {
 		//Initializing point list to store points generated
 		List<Point> Line = new ArrayList<>();
 
-		//Instantiating Plotter object
-		Plotter plotObj = new Plotter();
-
 		//Drawing the line
 		{
 			//Calculating line length
@@ -56,9 +53,9 @@ public class Q1_LineDrawing_SimpleDDA {
 		}
 
 		//Plotting the line
-		plotObj.printLine(Line);
+		Plotter.printLine(Line);
 		System.out.println();
-		plotObj.plotLine(Line, 'o');
+		Plotter.plotLine(Line, 'o');
 	}
 
 }

@@ -24,9 +24,6 @@ public class Q6_CircleDrawing_DDA {
 		//Initializing point list to store points generated
 		List<Point> Circle = new ArrayList<>();
 
-		//Instantiating Plotter object
-		Plotter plotObj = new Plotter(radius * 2 + 1, radius * 2 + 1);
-
 		//Finding epsilon
 		int power = 0;
 		while (Math.pow(2, power) <= radius) {
@@ -46,6 +43,6 @@ public class Q6_CircleDrawing_DDA {
 		}
 
 		//Plotting the circle
-		plotObj.plotCircle(Circle, radius, 'o');
+		Plotter.plotCircle(Circle, radius, 'o');
 	}
 }

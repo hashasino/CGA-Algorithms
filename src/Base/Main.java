@@ -9,12 +9,6 @@ class Main { //The Main Program Interface
 		//Initializing Scanner object
 		Scanner scan = new Scanner(System.in);
 
-		//Initializing LineDDA object
-		Line newLine = new Line();
-
-		//Initializing Circle object
-		Circle newCircle = new Circle();
-
 		//Initializing condition variables
 		boolean condition = true;
 		int choice = 0;
@@ -78,22 +72,22 @@ class Main { //The Main Program Interface
 			System.out.println("  Line coordinates:");
 			switch (choice) {
 				case 1:
-					newLine.SimpleDDA(x1, y1, x2, y2);
+					Line.SimpleDDA(x1, y1, x2, y2);
 					break;
 				case 2:
-					newLine.SymmetricalDDA(x1, y1, x2, y2);
+					Line.SymmetricalDDA(x1, y1, x2, y2);
 					break;
 				case 3:
-					newLine.Bresenhams(x1, y1, x2, y2);
+					Line.Bresenhams(x1, y1, x2, y2);
 					break;
 				case 4:
-					newCircle.DDA(x1);
+					Circle.DDA(x1);
 					break;
 				case 5:
-					newCircle.Bresenhams(x1);
+					Circle.Bresenhams(x1);
 					break;
 				case 6:
-					newCircle.MidPoint(x1);
+					Circle.MidPoint(x1);
 					break;
 			}
 

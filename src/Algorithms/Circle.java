@@ -7,7 +7,7 @@ import java.util.List;
 public class Circle { //Contains all Circle Drawing Algorithms
 
 	//DDA Circle Drawing Algorithm (gives hexagons tho, not circles)
-	public List<Point> DDA(int radius) {
+	public static List<Point> DDA(int radius) {
 
 		//Finding epsilon
 		int power = 0;
@@ -34,7 +34,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 	}
 
 	//Bresenham's Circle Drawing Algorithm
-	public List<Point> Bresenhams(int radius) {
+	public static List<Point> Bresenhams(int radius) {
 
 		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 	}
 
 	//Midpoint Circle Drawing Algorithm
-	public List<Point> MidPoint(int radius) {
+	public static List<Point> MidPoint(int radius) {
 
 		//Initializing point list for Circle
 		List<Point> Circle = new ArrayList<>();
@@ -86,7 +86,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 	}
 
 	//Midpoint Ellipse Drawing Algorithm
-	public void Ellipse(int radiusOne, int radiusTwo) {
+	public static void Ellipse(int radiusOne, int radiusTwo) {
 
 	}
 

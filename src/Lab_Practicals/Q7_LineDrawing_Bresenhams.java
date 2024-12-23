@@ -27,9 +27,6 @@ public class Q7_LineDrawing_Bresenhams {
 		//Initializing point list to store points generated
 		List<Point> Line = new ArrayList<>();
 
-		//Instantiating Plotter object
-		Plotter plotObj = new Plotter();
-
 		//Drawing the line
 		{
 			//Calculating delX & delY
@@ -81,8 +78,8 @@ public class Q7_LineDrawing_Bresenhams {
 		}
 
 		//Plotting the line
-		plotObj.printLine(Line);
+		Plotter.printLine(Line);
 		System.out.println();
-		plotObj.plotLine(Line, '*');
+		Plotter.plotLine(Line, '*');
 	}
 }
