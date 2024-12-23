@@ -26,8 +26,8 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		//Calculating the first octant
 		while (x <= y) {
 			Circle.add(new Point(x, y));
-			x = x + Math.round(y * epsilon);
-			y = y - Math.round(x * epsilon);
+			x = x + y * epsilon;
+			y = y - x * epsilon;
 		}
 
 		return Circle;

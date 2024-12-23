@@ -7,6 +7,7 @@ public class Plotter { //Contains methods to print & plot objects
 	private final int height;
 	private final String[][] World;
 
+	//TODO - You should probably remove the default constructor and modify all it usages to the other one
 	public Plotter() {
 		this.width = 39;
 		this.height = 39;

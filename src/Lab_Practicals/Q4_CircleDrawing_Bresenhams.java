@@ -34,11 +34,11 @@ public class Q4_CircleDrawing_Bresenhams {
 			if (max < radius) max = radius;
 		}
 
-		//Instantiating Plotter object
-		Plotter plotObj = new Plotter(max * 2 + 1, max * 2 + 1);
-
 		//Initializing point list to store points generated
 		List<Point> Circle = new ArrayList<>();
+
+		//Instantiating Plotter object
+		Plotter plotObj = new Plotter(max * 2 + 1, max * 2 + 1);
 
 		//Drawing circles
 		for (int i = 0; i < circle; i++) {
@@ -59,7 +59,7 @@ public class Q4_CircleDrawing_Bresenhams {
 					decisionParameter += 4 * (x - y) + 10;
 				}
 			}
-			plotObj.WorldPlotCircle(Circle, '*');
+			plotObj.WorldPlotCircle(Circle, 'o');
 		}
 
 		//Displaying circles

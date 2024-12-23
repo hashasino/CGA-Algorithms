@@ -52,7 +52,7 @@ public class Q1_LineDrawing_SimpleDDA {
 		Plotter plotObj = new Plotter();
 		plotObj.printLine(Line);
 		System.out.println();
-		plotObj.plotLine(Line, '*');
+		plotObj.plotLine(Line, 'o');
 	}
 
 }

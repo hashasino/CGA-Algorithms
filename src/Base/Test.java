@@ -10,13 +10,13 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 //		Test.LineDrawingAlgorithms();
 
-//		Test.CircleDrawingAlgorithms();
+		Test.CircleDrawingAlgorithms();
 
 //		Test.EllipseDrawingAlgorithms();
 
 //		Test.WorldLines();
 
-		Test.WorldCircles();
+//		Test.WorldCircles();
 	}
 
 	static void LineDrawingAlgorithms() {
@@ -55,14 +55,14 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			PointList = newLine.SimpleDDA(x1, y1, x2, y2);
 			plotObj.printLine(PointList);
 			System.out.println();
-			plotObj.plotLine(PointList, '*');
+			plotObj.plotLine(PointList, 'o');
 
 			//Calculating line using SymmetricalDDA
 			System.out.println("SymmetricalDDA");
 			PointList = newLine.SymmetricalDDA(x1, y1, x2, y2);
 			plotObj.printLine(PointList);
 			System.out.println();
-			plotObj.plotLine(PointList, '*');
+			plotObj.plotLine(PointList, 'o');
 
 
 			//Calculating line using Bresenham's
@@ -70,7 +70,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			PointList = newLine.Bresenhams(x1, y1, x2, y2);
 			plotObj.printLine(PointList);
 			System.out.println();
-			plotObj.plotLine(PointList, '*');
+			plotObj.plotLine(PointList, 'o');
 
 
 			//Calculating line using Midpoint
@@ -78,7 +78,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			PointList = newLine.Midpoint(x1, y1, x2, y2);
 			plotObj.printLine(PointList);
 			System.out.println();
-			plotObj.plotLine(PointList, '*');
+			plotObj.plotLine(PointList, 'o');
 
 
 			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
@@ -88,7 +88,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 	static void CircleDrawingAlgorithms() {
 
 		//Creating a list of radii to test
-		int[] radii = {7, 14, 21};
+		int[] radii = {4, 7, 16, 25};
 
 		//Instantiating a Scanner object to control output display for each coordinate pair step-by-step
 		Scanner scan = new Scanner(System.in);
@@ -103,7 +103,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 		Plotter plotObj = new Plotter();
 
 		//Initiating test loop
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < radii.length; i++) {
 
 			//Assigning current radius
 			int radius = radii[i];
@@ -116,14 +116,14 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			System.out.println("DDA");
 			PointList = newCircle.DDA(radius);
 			plotObj.printCircle(PointList);
-			plotObj.plotCircle(PointList, radius, '*');
+			plotObj.plotCircle(PointList, radius, 'o');
 			System.out.println();
 
 			//Calculating circle using Bresenham's
 			System.out.println("Bresenham's");
 			PointList = newCircle.Bresenhams(radius);
 			plotObj.printCircle(PointList);
-			plotObj.plotCircle(PointList, radius, '*');
+			plotObj.plotCircle(PointList, radius, 'o');
 			System.out.println();
 
 
@@ -131,7 +131,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			System.out.println("Midpoint");
 			PointList = newCircle.MidPoint(radius);
 			plotObj.printCircle(PointList);
-			plotObj.plotCircle(PointList, radius, '*');
+			plotObj.plotCircle(PointList, radius, 'o');
 			System.out.println();
 
 
@@ -200,25 +200,25 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			Line = newLine.SimpleDDA(x1, y1, x2, y2);
 			plotObj.printLine(Line);
 			System.out.println("SimpleDDA");
-			plotObj.WorldPlotLine(Line, '*');
+			plotObj.WorldPlotLine(Line, 'o');
 
 			//Calculating line using SymmetricalDDA
 			Line = newLine.SymmetricalDDA(x1, y1, x2, y2);
 			plotObj.printLine(Line);
 			System.out.println("SymmetricalDDA");
-			plotObj.WorldPlotLine(Line, '*');
+			plotObj.WorldPlotLine(Line, 'o');
 
 			//Calculating line using Bresenham's
 			Line = newLine.Bresenhams(x1, y1, x2, y2);
 			plotObj.printLine(Line);
 			System.out.println("Bresenham's");
-			plotObj.WorldPlotLine(Line, '*');
+			plotObj.WorldPlotLine(Line, 'o');
 
 			//Calculating line using Midpoint
 			Line = newLine.Midpoint(x1, y1, x2, y2);
 			plotObj.printLine(Line);
 			System.out.println("Midpoint");
-			plotObj.WorldPlotLine(Line, '*');
+			plotObj.WorldPlotLine(Line, 'o');
 
 		}
 
