@@ -42,8 +42,8 @@ public class Q4_CircleDrawing_Bresenhams {
 
 		//Drawing circles
 		for (int i = 0; i < circle; i++) {
-			System.out.println("\n" + (i + 1) + ". Radius = " + radii[i] + "\n");
-			//Initializing loop variables
+
+			//Initializing inner loop variables
 			int x = 0;
 			int y = radii[i];
 			int decisionParameter = 3 - 2 * radii[i];
@@ -59,6 +59,8 @@ public class Q4_CircleDrawing_Bresenhams {
 					decisionParameter += 4 * (x - y) + 10;
 				}
 			}
+
+			//Plotting circle
 			plotObj.WorldPlotCircle(Circle, 'o');
 		}
 

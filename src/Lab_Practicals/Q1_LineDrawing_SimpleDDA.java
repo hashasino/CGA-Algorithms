@@ -24,32 +24,38 @@ public class Q1_LineDrawing_SimpleDDA {
 		int x2 = scan.nextInt();
 		int y2 = scan.nextInt();
 
-		//Calculating line length
-		int delX = x2 - x1;
-		int delY = y2 - y1;
-		int length = Math.max(Math.abs(delX), Math.abs(delY));
-
-		// Calculating increment values
-		double xIncrement = (double) delX / length;
-		double yIncrement = (double) delY / length;
-
-		//Initializing point list for Algorithms.Line
+		//Initializing point list to store points generated
 		List<Point> Line = new ArrayList<>();
-		Line.add(new Point(x1, y1)); //Adding starting point
 
-		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		//Instantiating Plotter object
+		Plotter plotObj = new Plotter();
 
-		//Calculating line coordinates
-		for (int i = 0; i < length; i++) {
-			x = x + xIncrement;
-			y = y + yIncrement;
-			Line.add(new Point(x, y));
+		//Drawing the line
+		{
+			//Calculating line length
+			int delX = x2 - x1;
+			int delY = y2 - y1;
+			int length = Math.max(Math.abs(delX), Math.abs(delY));
+
+			// Calculating increment values
+			double xIncrement = (double) delX / length;
+			double yIncrement = (double) delY / length;
+
+			Line.add(new Point(x1, y1)); //Adding starting point
+
+			//Initializing loop variables
+			double x = x1;
+			double y = y1;
+
+			//Calculating line coordinates
+			for (int i = 0; i < length; i++) {
+				x = x + xIncrement;
+				y = y + yIncrement;
+				Line.add(new Point(x, y));
+			}
 		}
 
-		//Plotting the line using the coordinates calculated
-		Plotter plotObj = new Plotter();
+		//Plotting the line
 		plotObj.printLine(Line);
 		System.out.println();
 		plotObj.plotLine(Line, 'o');

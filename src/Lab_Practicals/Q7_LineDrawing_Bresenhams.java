@@ -1,18 +1,19 @@
 package Lab_Practicals;
 
-// Q5. Write a program for line drawing as Raster Graphics Display.
+// Q7. Write a program to draw a line using Bresenham line drawing algorithm.
 
 import Base.Point;
 import Base.Plotter;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Q5_LineDrawing_Midpoint {
+public class Q7_LineDrawing_Bresenhams {
 	public static void main(String[] args) {
 
 		//Program Declaration
-		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using Midpoint Line Drawing Algorithm.");
+		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using Bresenham's Line Drawing Algorithm.");
 
 		//Initializing Scanner object
 		Scanner scan = new Scanner(System.in);
@@ -51,8 +52,8 @@ public class Q5_LineDrawing_Midpoint {
 				delY = Math.abs(y2 - y1);
 			}
 
-			//Initializing the decision parameter
-			int decisionParameter = delY - (delX / 2);
+			//Initializing decision parameter
+			int decisionParameter = 2 * delY - delX;
 
 			//Deciding increment sign+values (-1, 0, 1)
 			int xIncrement = Integer.compare(x2, x1);
@@ -70,10 +71,10 @@ public class Q5_LineDrawing_Midpoint {
 			while (x != x2 || y != y2) {
 				x = x + xIncrement;
 				if (decisionParameter < 0) {
-					decisionParameter += delY;
+					decisionParameter += 2 * delY;
 				} else {
 					y = y + yIncrement;
-					decisionParameter += (delY - delX);
+					decisionParameter += 2 * (delY - delX);
 				}
 				if (isSteep) Line.add(new Point(y, x));
 				else Line.add(new Point(x, y));

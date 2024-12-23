@@ -2,12 +2,11 @@ package Lab_Practicals;
 
 // Q6. Write a program for circle drawing as Raster Graphics Display.
 
-import Base.Plotter;
 import Base.Point;
-
-import java.util.ArrayList;
+import Base.Plotter;
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Q6_CircleDrawing_DDA {
 	public static void main(String[] args) {

@@ -71,8 +71,7 @@ public class Line { //Contains all Line Drawing Algorithms
 
 			newPoint = new Point(x, y);
 
-			if (Math.round(newPoint.x) != Math.round(prevPoint.x) ||
-					Math.round(newPoint.y) != Math.round(prevPoint.y)) {
+			if (Math.round(newPoint.x) != Math.round(prevPoint.x) || Math.round(newPoint.y) != Math.round(prevPoint.y)) {
 				Line.add(newPoint);
 				prevPoint = newPoint;
 			}
@@ -88,6 +87,19 @@ public class Line { //Contains all Line Drawing Algorithms
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
 		int delY = Math.abs(y2 - y1);
+		boolean isSteep = delY > delX; //Swapping x and y for steep slopes
+		if (isSteep) {
+			int temp = x1;
+			x1 = y1;
+			y1 = temp;
+
+			temp = x2;
+			x2 = y2;
+			y2 = temp;
+
+			delX = Math.abs(x2 - x1);
+			delY = Math.abs(y2 - y1);
+		}
 
 		//Initializing decision parameter
 		int decisionParameter = 2 * delY - delX;
@@ -98,7 +110,10 @@ public class Line { //Contains all Line Drawing Algorithms
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
-		Line.add(new Point(x1, y1)); //Adding starting point
+
+		//Adding the first point to the point list
+		if (isSteep) Line.add(new Point(y1, x1));
+		else Line.add(new Point(x1, y1));
 
 		//Initializing loop variables
 		double x = x1;
@@ -113,7 +128,8 @@ public class Line { //Contains all Line Drawing Algorithms
 				y = y + yIncrement;
 				decisionParameter += 2 * (delY - delX);
 			}
-			Line.add(new Point(x, y));
+			if (isSteep) Line.add(new Point(y, x));
+			else Line.add(new Point(x, y));
 		}
 
 		return Line;
@@ -126,6 +142,19 @@ public class Line { //Contains all Line Drawing Algorithms
 		//Calculating delX & delY
 		int delX = Math.abs(x2 - x1);
 		int delY = Math.abs(y2 - y1);
+		boolean isSteep = delY > delX; //Swapping x and y for steep slopes
+		if (isSteep) {
+			int temp = x1;
+			x1 = y1;
+			y1 = temp;
+
+			temp = x2;
+			x2 = y2;
+			y2 = temp;
+
+			delX = Math.abs(x2 - x1);
+			delY = Math.abs(y2 - y1);
+		}
 
 		//Initializing the decision parameter
 		int decisionParameter = delY - (delX / 2);
@@ -136,7 +165,10 @@ public class Line { //Contains all Line Drawing Algorithms
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
-		Line.add(new Point(x1, y1)); //Adding starting point
+
+		//Adding the first point to the point list
+		if (isSteep) Line.add(new Point(y1, x1));
+		else Line.add(new Point(x1, y1));
 
 		//Initializing loop variables
 		double x = x1;
@@ -151,7 +183,8 @@ public class Line { //Contains all Line Drawing Algorithms
 				y = y + yIncrement;
 				decisionParameter += (delY - delX);
 			}
-			Line.add(new Point(x, y));
+			if (isSteep) Line.add(new Point(y, x));
+			else Line.add(new Point(x, y));
 		}
 
 		return Line;

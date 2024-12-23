@@ -1,7 +1,6 @@
 package Base;
 
 import Algorithms.*;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 //		Test.LineDrawingAlgorithms();
 
-		Test.CircleDrawingAlgorithms();
+//		Test.CircleDrawingAlgorithms();
 
 //		Test.EllipseDrawingAlgorithms();
 
