@@ -1,2 +1,6 @@
 TODO :
- - in package.Algorithms: Add methods to generate Arcs, Sectors, Ellipses & Polygons
+ - in Algorithms: Make it so you can give the starting/center point as a parameter for Drawing Algorithms
+ - Also add default values for them in case someone wants to skip that
+ - Make sure that the Point(x,y,z) values are rounded only when plotting & when required for index call
+ - Also, maybe add back the displayCharacter for Point class
+ - Write various public methods to implement Data Hiding/Abstraction

@@ -108,18 +108,18 @@ public class Plotter { //Contains methods to print & plot objects
 		}
 
 		// Calculating grid dimensions
-		int width = (int) (maxX - minX + 1);
-		int height = (int) (maxY - minY + 1);
+		int width = (int) Math.round(maxX - minX) + 1;
+		int height = (int) Math.round(maxY - minY) + 1;
 
 		//Initializing grid/frame buffer
 		String[][] grid = Plotter.initializeObjectGrid(width, height);
 
 		// Plotting coordinates
 		for (Point point : Object) {
-			int X = (int) (Math.round(point.x - minX) + 1);
-			int Y = (int) (Math.round(point.y - minY) + 1);
+			int X = (int) (Math.round(point.x - minX));
+			int Y = (int) (Math.round(point.y - minY));
 
-			grid[X - 1][height - Y] = String.valueOf(character);
+			grid[X][height - Y - 1] = String.valueOf(character);
 		}
 
 		// Displaying coordinate grid

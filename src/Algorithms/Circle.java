@@ -1,11 +1,53 @@
 package Algorithms;
 
+import Base.Plotter;
 import Base.Point;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Circle { //Contains all Circle Drawing Algorithms
+	public static void main(String[] args) {
+
+		int[] angles = {0, 90, 180, 270, 360};
+
+		for (int i : angles) {
+			System.out.println("  Angle - " + i);
+			Plotter.plotObject(Arc(i, 10, new Point(0, 10)), '0');
+			System.out.println();
+		}
+	}
+
+	//Algorithm to draw arcs using their parametric functions
+	public static List<Point> Arc(double angle, int radius, Point startPoint) {
+
+		//Calculating start & end angles
+		double startAngle = Math.atan2(startPoint.y, startPoint.x);
+		double endAngle = startAngle + Math.toRadians(angle);
+
+		//Calculating the angle increment based on radius
+		double angleIncrement = 1.0 / radius;
+
+		//Initializing point list for the arc
+		List<Point> Arc = new ArrayList<>();
+
+		//Initializing loop variables
+		double x, y, currentAngle = startAngle;
+
+		//Generating arc coordinates
+		while (currentAngle < endAngle) {
+			x = radius * Math.cos(currentAngle);
+			y = radius * Math.sin(currentAngle);
+			Arc.add(new Point(x, y));
+			currentAngle += angleIncrement;
+		}
+		//Adding the final point
+		double endX = radius * Math.cos(endAngle);
+		double endY = radius * Math.sin(endAngle);
+		Arc.add(new Point(endX, endY));
+
+		return Arc;
+	}
 
 	//DDA Circle Drawing Algorithm
 	public static List<Point> DDA(int radius) {
