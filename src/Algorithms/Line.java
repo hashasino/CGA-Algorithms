@@ -38,7 +38,7 @@ public class Line { //Contains all Line Drawing Algorithms
 
 	} //End Method
 
-	//TODO - Generates extra points that are not on the line when slope is -1
+	//FIXME - Generates extra points that are not on the line when slope is -1
 	//SymmetricalDDA Line Drawing Algorithm
 	public static List<Point> SymmetricalDDA(Point startPoint, Point endPoint) {
 
@@ -121,7 +121,7 @@ public class Line { //Contains all Line Drawing Algorithms
 		double y = startPoint.y;
 
 		//Calculating line coordinates
-		while (x != endPoint.x || y != endPoint.y) {
+		while ((int) x != endPoint.x || (int) y != endPoint.y) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * delY;
@@ -174,9 +174,11 @@ public class Line { //Contains all Line Drawing Algorithms
 		//Initializing loop variables
 		double x = startPoint.x;
 		double y = startPoint.y;
+		endPoint.x = Math.round(endPoint.x);
+		endPoint.y = Math.round(endPoint.y);
 
 		//Calculating line coordinates
-		while (x != endPoint.x || y != endPoint.y) {
+		while ((int) x != endPoint.x || (int) y != endPoint.y) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += delY;

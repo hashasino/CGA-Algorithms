@@ -9,11 +9,12 @@ import java.util.List;
 public class Circle { //Contains all Circle Drawing Algorithms
 	public static void main(String[] args) {
 
-		int[] angles = {0, 90, 180, 270, 360};
+		int[] angles = {0, 45, 90, 135, 180, 225, 270, 315, 360};
 
 		for (int i : angles) {
 			System.out.println("  Angle - " + i);
-			Plotter.plotObject(Arc(i, 10, new Point(0, 10)), '0');
+//			Plotter.plotObject(Arc(i, 10, new Point(0, 10)), '0');
+			Plotter.plotObject(Sector(i, 10, new Point(0, 10)), '0');
 			System.out.println();
 		}
 	}
@@ -47,6 +48,26 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		Arc.add(new Point(endX, endY));
 
 		return Arc;
+	}
+
+	//For drawing sectors
+	public static List<Point> Sector(double angle, int radius, Point startPoint) {
+
+		//Initializing point list for the Sector with the arc
+		List<Point> Sector = Arc(angle, radius, startPoint);
+
+		//Calculating center & end point
+		double startAngle = Math.atan2(startPoint.y, startPoint.x);
+		double endAngle = startAngle + Math.toRadians(angle);
+
+		Point centerPoint = new Point(0, 0);
+		Point endPoint = new Point(radius * Math.cos(endAngle), radius * Math.sin(endAngle));
+
+		//Adding the two radii to complete the Sector
+		Sector.addAll(Line.Midpoint(startPoint, centerPoint));
+		Sector.addAll(Line.Midpoint(endPoint, centerPoint));
+
+		return Sector;
 	}
 
 	//DDA Circle Drawing Algorithm
