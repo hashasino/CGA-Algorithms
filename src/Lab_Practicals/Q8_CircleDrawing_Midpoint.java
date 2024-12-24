@@ -4,6 +4,7 @@ package Lab_Practicals;
 
 import Base.Point;
 import Base.Plotter;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 	public static void main(String[] args) {
 
 		//Program Declaration
-		System.out.println("This is a program to display a series of concentric circles of varying radius using Midpoint Circle Drawing Algorithm.");
+		System.out.println("This is a program to drawing a circle, an arc & a sector using Midpoint Circle Drawing Algorithm.");
 
 		//Instantiating Scanner object
 		Scanner scan = new Scanner(System.in);
@@ -42,6 +43,6 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 		}
 
 		//Plotting the circle
-		Plotter.plotCircle(Circle, radius, 'o');
+		Plotter.plotObject(Circle, 'o');
 	}
 }

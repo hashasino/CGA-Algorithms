@@ -4,14 +4,13 @@ public class Point { //The basic point class/blueprint
 	public final double x;
 	public final double y;
 	public final double z;
-	char displayCharacter;
-	boolean flag = false;
+	boolean PointIs2D = false;
 
 	//Constructor for 2D point
 	public Point(double x, double y) {
 		this.x = x;
 		this.y = y;
-		flag = true;
+		PointIs2D = true;
 		z = 1;
 	}
 
@@ -28,7 +27,7 @@ public class Point { //The basic point class/blueprint
 		long y = Math.round(this.y);
 		long z = Math.round(this.z);
 
-		if (flag)
+		if (PointIs2D)
 			return "(" + x + "," + y + ")";
 		else
 			return "(" + x + "," + y + "," + z + ")";

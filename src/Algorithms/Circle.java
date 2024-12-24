@@ -1,12 +1,13 @@
 package Algorithms;
 
 import Base.Point;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Circle { //Contains all Circle Drawing Algorithms
 
-	//DDA Circle Drawing Algorithm (gives hexagons tho, not circles)
+	//DDA Circle Drawing Algorithm
 	public static List<Point> DDA(int radius) {
 
 		//Finding epsilon
@@ -16,7 +17,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		}
 		double epsilon = Math.pow(2, -power);
 
-		//Initializing point list for Circle
+		//Initializing point list for Octant
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -30,13 +31,26 @@ public class Circle { //Contains all Circle Drawing Algorithms
 			y = y - x * epsilon;
 		}
 
+		//Generating other octants
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(Y, X));
+			Circle.add(new Point(Y, -X));
+			Circle.add(new Point(X, -Y));
+			Circle.add(new Point(-X, -Y));
+			Circle.add(new Point(-Y, -X));
+			Circle.add(new Point(-Y, X));
+			Circle.add(new Point(-X, Y));
+		}
+
 		return Circle;
 	}
 
 	//Bresenham's Circle Drawing Algorithm
 	public static List<Point> Bresenhams(int radius) {
 
-		//Initializing point list for Circle
+		//Initializing point list for Octant
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -56,13 +70,26 @@ public class Circle { //Contains all Circle Drawing Algorithms
 			}
 		}
 
+		//Generating other octants
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(Y, X));
+			Circle.add(new Point(Y, -X));
+			Circle.add(new Point(X, -Y));
+			Circle.add(new Point(-X, -Y));
+			Circle.add(new Point(-Y, -X));
+			Circle.add(new Point(-Y, X));
+			Circle.add(new Point(-X, Y));
+		}
+
 		return Circle;
 	}
 
 	//Midpoint Circle Drawing Algorithm
 	public static List<Point> MidPoint(int radius) {
 
-		//Initializing point list for Circle
+		//Initializing point list for Octant
 		List<Point> Circle = new ArrayList<>();
 
 		//Initializing loop variables
@@ -82,12 +109,24 @@ public class Circle { //Contains all Circle Drawing Algorithms
 			}
 		}
 
+		//Generating other octants
+		for (Point point : Circle) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(Y, X));
+			Circle.add(new Point(Y, -X));
+			Circle.add(new Point(X, -Y));
+			Circle.add(new Point(-X, -Y));
+			Circle.add(new Point(-Y, -X));
+			Circle.add(new Point(-Y, X));
+			Circle.add(new Point(-X, Y));
+		}
+
 		return Circle;
 	}
 
 	//Midpoint Ellipse Drawing Algorithm
 	public static void Ellipse(int radiusOne, int radiusTwo) {
-
 	}
 
 }

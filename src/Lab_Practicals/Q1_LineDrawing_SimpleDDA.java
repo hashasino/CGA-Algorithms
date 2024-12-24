@@ -4,6 +4,7 @@ package Lab_Practicals;
 
 import Base.Point;
 import Base.Plotter;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -24,38 +25,35 @@ public class Q1_LineDrawing_SimpleDDA {
 		int x2 = scan.nextInt();
 		int y2 = scan.nextInt();
 
-		//Initializing point list to store points generated
+		//Initializing point list to store points to be generated
 		List<Point> Line = new ArrayList<>();
 
-		//Drawing the line
-		{
-			//Calculating line length
-			int delX = x2 - x1;
-			int delY = y2 - y1;
-			int length = Math.max(Math.abs(delX), Math.abs(delY));
+		//Calculating line length
+		int delX = x2 - x1;
+		int delY = y2 - y1;
+		int length = Math.max(Math.abs(delX), Math.abs(delY));
 
-			// Calculating increment values
-			double xIncrement = (double) delX / length;
-			double yIncrement = (double) delY / length;
+		// Calculating increment values
+		double xIncrement = (double) delX / length;
+		double yIncrement = (double) delY / length;
 
-			Line.add(new Point(x1, y1)); //Adding starting point
+		Line.add(new Point(x1, y1)); //Adding starting point
 
-			//Initializing loop variables
-			double x = x1;
-			double y = y1;
+		//Initializing loop variables
+		double x = x1;
+		double y = y1;
 
-			//Calculating line coordinates
-			for (int i = 0; i < length; i++) {
-				x = x + xIncrement;
-				y = y + yIncrement;
-				Line.add(new Point(x, y));
-			}
+		//Calculating line coordinates
+		for (int i = 0; i < length; i++) {
+			x = x + xIncrement;
+			y = y + yIncrement;
+			Line.add(new Point(x, y));
 		}
 
 		//Plotting the line
-		Plotter.printLine(Line);
+		Plotter.printObject(Line);
 		System.out.println();
-		Plotter.plotLine(Line, 'o');
+		Plotter.plotObject(Line, 'o');
 	}
 
 }

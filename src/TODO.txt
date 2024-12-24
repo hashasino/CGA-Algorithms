@@ -1,0 +1,2 @@
+TODO :
+ - in package.Algorithms: Add methods to generate Arcs, Sectors, Ellipses & Polygons

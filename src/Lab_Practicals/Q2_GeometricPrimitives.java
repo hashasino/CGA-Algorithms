@@ -4,6 +4,8 @@ package Lab_Practicals;
 
 import java.util.Scanner;
 
+// We define the basic 2D geometrics primitives as: points, lines, arcs, sectors & polygons.
+
 public class Q2_GeometricPrimitives {
 	private final char[][] grid;
 	private final int width;
@@ -94,7 +96,7 @@ public class Q2_GeometricPrimitives {
 		}
 	}
 
-	// Check if coordinate is within grid
+	// To check if coordinate is within grid
 	private boolean isValidCoordinate(int x, int y) {
 		return x >= 0 && x < width && y >= 0 && y < height;
 	}

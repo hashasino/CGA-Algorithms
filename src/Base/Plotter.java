@@ -6,15 +6,19 @@ public class Plotter { //Contains methods to print & plot objects
 	private final int width;
 	private final int height;
 	private final String[][] World;
+	private final int centerX;
+	private final int centerY;
 
 	public Plotter(int width, int height) {
 		this.width = width;
 		this.height = height;
-		this.World = WorldGrid(width, height);
+		this.World = initializeWorldGrid(width, height);
+		this.centerX = width / 2;
+		this.centerY = height / 2;
 	}
 
 	//To initialize grid for plotting a single object
-	private static String[][] ObjectGrid(int width, int height) {
+	private static String[][] initializeObjectGrid(int width, int height) {
 
 		//Initializing grid/frame buffer
 		String[][] grid = new String[width][height];
@@ -47,7 +51,7 @@ public class Plotter { //Contains methods to print & plot objects
 	}
 
 	//To initialize grid for plotting multiple objects
-	private String[][] WorldGrid(int width, int height) {
+	private String[][] initializeWorldGrid(int width, int height) {
 
 		String[][] grid = new String[width][height];
 
@@ -74,14 +78,20 @@ public class Plotter { //Contains methods to print & plot objects
 		return grid;
 	}
 
-	//To print & plot Line
-	public static void printLine(List<Point> Line) {
-		for (Point point : Line) {
+	// To check if the point to be plotted is within World Grid
+	private boolean isValidCoordinate(int x, int y) {
+		return x >= 0 && x < width && y >= 0 && y < height;
+	}
+
+	//To print object coordinates
+	public static void printObject(List<Point> Object) {
+		for (Point point : Object) {
 			System.out.print(point.getCoordinates() + ' ');
 		}
 	}
 
-	public static void plotLine(List<Point> Line, char character) {
+	//To plot object in its ObjectGrid
+	public static void plotObject(List<Point> Object, char character) {
 
 		//Setting initial min/max value
 		double minX = Double.MAX_VALUE;
@@ -90,7 +100,7 @@ public class Plotter { //Contains methods to print & plot objects
 		double maxY = Double.MIN_VALUE;
 
 		//Finding min & max for x & y for all points in the list
-		for (Point point : Line) {
+		for (Point point : Object) {
 			if (point.x < minX) minX = point.x;
 			if (point.x > maxX) maxX = point.x;
 			if (point.y < minY) minY = point.y;
@@ -102,10 +112,10 @@ public class Plotter { //Contains methods to print & plot objects
 		int height = (int) (maxY - minY + 1);
 
 		//Initializing grid/frame buffer
-		String[][] grid = Plotter.ObjectGrid(width, height);
+		String[][] grid = Plotter.initializeObjectGrid(width, height);
 
 		// Plotting coordinates
-		for (Point point : Line) {
+		for (Point point : Object) {
 			int X = (int) (Math.round(point.x - minX) + 1);
 			int Y = (int) (Math.round(point.y - minY) + 1);
 
@@ -122,85 +132,19 @@ public class Plotter { //Contains methods to print & plot objects
 		}
 	}
 
-	//To print & plot Circle
-	public static void printCircle(List<Point> Circle) {
-
-		for (Point point : Circle) {
-			int X = (int) Math.round(point.x);
-			int Y = (int) Math.round(point.y);
-			System.out.print("(" + X + "," + Y + ") ");
-			System.out.print("(" + Y + "," + X + ") ");
-			System.out.print("(" + Y + "," + -X + ") ");
-			System.out.print("(" + X + "," + -Y + ") ");
-			System.out.print("(" + -X + "," + -Y + ") ");
-			System.out.print("(" + -Y + "," + -X + ") ");
-			System.out.print("(" + -Y + "," + X + ") ");
-			System.out.print("(" + -X + "," + Y + ") ");
-			System.out.println();
-		}
-	}
-
-	public static void plotCircle(List<Point> Circle, int radius, char character) {
-
-		int diameter = 2 * radius;
-
-		//Initializing grid/frame buffer
-		String[][] grid = Plotter.ObjectGrid(diameter + 1, diameter + 1);
-
-		// Plotting coordinates
-		for (Point point : Circle) {
-			int X = (int) (Math.round(point.x));
-			int Y = (int) (Math.round(point.y));
-			grid[radius + X][radius - Y] = String.valueOf(character);
-			grid[radius + Y][radius - X] = String.valueOf(character);
-			grid[radius + Y][radius + X] = String.valueOf(character);
-			grid[radius + X][radius + Y] = String.valueOf(character);
-			grid[radius - X][radius + Y] = String.valueOf(character);
-			grid[radius - Y][radius + X] = String.valueOf(character);
-			grid[radius - Y][radius - X] = String.valueOf(character);
-			grid[radius - X][radius - Y] = String.valueOf(character);
-		}
-
-		// Displaying coordinate grid
-		for (int j = 0; j <= diameter; j++) {
-			for (int i = 0; i <= diameter; i++) {
-				String cell = grid[i][j];
-				System.out.printf("%3s", cell);
-			}
-			System.out.println();
-		}
-
-	}
-
-	//To plot (everything, everywhere, all) objects in the WorldGrid
-	public void WorldPlotLine(List<Point> Line, char character) {
-
-		int centerX = width / 2;
-		int centerY = height / 2;
-
-		for (Point point : Line) {
-			int X = (int) (Math.round(point.x));
-			int Y = (int) (Math.round(point.y));
+	//To plot a point in the World Grid
+	public void WorldPlotPoint(Point Point, char character) {
+		int X = (int) (Math.round(Point.x));
+		int Y = (int) (Math.round(Point.y));
+		if (isValidCoordinate(X, Y)) {
 			World[centerX + X][centerY - Y] = String.valueOf(character);
 		}
 	}
 
-	public void WorldPlotCircle(List<Point> Circle, char character) {
-
-		int centerX = width / 2;
-		int centerY = height / 2;
-
-		for (Point point : Circle) {
-			int X = (int) (Math.round(point.x));
-			int Y = (int) (Math.round(point.y));
-			World[centerX + X][centerY - Y] = String.valueOf(character);
-			World[centerX + Y][centerY - X] = String.valueOf(character);
-			World[centerX + Y][centerY + X] = String.valueOf(character);
-			World[centerX + X][centerY + Y] = String.valueOf(character);
-			World[centerX - X][centerY + Y] = String.valueOf(character);
-			World[centerX - Y][centerY + X] = String.valueOf(character);
-			World[centerX - Y][centerY - X] = String.valueOf(character);
-			World[centerX - X][centerY - Y] = String.valueOf(character);
+	//To plot objects in the World Grid
+	public void WorldPlotObject(List<Point> Object, char character) {
+		for (Point point : Object) {
+			WorldPlotPoint(point, character);
 		}
 	}
 
@@ -213,6 +157,21 @@ public class Plotter { //Contains methods to print & plot objects
 			}
 			System.out.println();
 		}
+	}
+
+	//To clear a point in World Grid
+	public void ClearPoint(Point Point) {
+		WorldPlotPoint(Point, '.');
+	}
+
+	//To clear objects in World Grid
+	public void ClearObject(List<Point> Object) {
+		WorldPlotObject(Object, '.');
+	}
+
+	//To completely clear the WorldGrid
+	public void ClearWorld() {
+		initializeWorldGrid(width, height);
 	}
 
 }

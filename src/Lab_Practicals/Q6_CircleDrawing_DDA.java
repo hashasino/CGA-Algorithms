@@ -4,6 +4,7 @@ package Lab_Practicals;
 
 import Base.Point;
 import Base.Plotter;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Q6_CircleDrawing_DDA {
 		System.out.println("Enter radius for the circle: ");
 		int radius = scan.nextInt();
 
-		//Initializing point list to store points generated
+		//Initializing point list to store points to be generated
 		List<Point> Circle = new ArrayList<>();
 
 		//Finding epsilon
@@ -43,6 +44,6 @@ public class Q6_CircleDrawing_DDA {
 		}
 
 		//Plotting the circle
-		Plotter.plotCircle(Circle, radius, 'o');
+		Plotter.plotObject(Circle, 'o');
 	}
 }

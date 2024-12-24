@@ -46,32 +46,32 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			//Calculating line using SimpleDDA
 			System.out.println("SimpleDDA");
 			PointList = Line.SimpleDDA(x1, y1, x2, y2);
-			Plotter.printLine(PointList);
+			Plotter.printObject(PointList);
 			System.out.println();
-			Plotter.plotLine(PointList, 'o');
+			Plotter.plotObject(PointList, 'o');
 
 			//Calculating line using SymmetricalDDA
 			System.out.println("SymmetricalDDA");
 			PointList = Line.SymmetricalDDA(x1, y1, x2, y2);
-			Plotter.printLine(PointList);
+			Plotter.printObject(PointList);
 			System.out.println();
-			Plotter.plotLine(PointList, 'o');
+			Plotter.plotObject(PointList, 'o');
 
 
 			//Calculating line using Bresenham's
 			System.out.println("Bresenham's");
 			PointList = Line.Bresenhams(x1, y1, x2, y2);
-			Plotter.printLine(PointList);
+			Plotter.printObject(PointList);
 			System.out.println();
-			Plotter.plotLine(PointList, 'o');
+			Plotter.plotObject(PointList, 'o');
 
 
 			//Calculating line using Midpoint
 			System.out.println("Midpoint");
 			PointList = Line.Midpoint(x1, y1, x2, y2);
-			Plotter.printLine(PointList);
+			Plotter.printObject(PointList);
 			System.out.println();
-			Plotter.plotLine(PointList, 'o');
+			Plotter.plotObject(PointList, 'o');
 
 
 			scan.nextLine(); //Waiting for user input to move on to the next iteration/coordinate pair
@@ -102,23 +102,23 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			//Calculating circle using DDA
 			System.out.println("DDA");
 			PointList = Circle.DDA(radius);
-			Plotter.printCircle(PointList);
-			Plotter.plotCircle(PointList, radius, 'o');
+			Plotter.printObject(PointList);
+			Plotter.plotObject(PointList, 'o');
 			System.out.println();
 
 			//Calculating circle using Bresenham's
 			System.out.println("Bresenham's");
 			PointList = Circle.Bresenhams(radius);
-			Plotter.printCircle(PointList);
-			Plotter.plotCircle(PointList, radius, 'o');
+			Plotter.printObject(PointList);
+			Plotter.plotObject(PointList, 'o');
 			System.out.println();
 
 
 			//Calculating circle using Midpoint
 			System.out.println("Midpoint");
 			PointList = Circle.MidPoint(radius);
-			Plotter.printCircle(PointList);
-			Plotter.plotCircle(PointList, radius, 'o');
+			Plotter.printObject(PointList);
+			Plotter.plotObject(PointList, 'o');
 			System.out.println();
 
 
@@ -179,27 +179,27 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 			//Calculating line using SimpleDDA
 			pointsLine = Line.SimpleDDA(x1, y1, x2, y2);
-			Plotter.printLine(pointsLine);
+			Plotter.printObject(pointsLine);
 			System.out.println("SimpleDDA");
-			plotObj.WorldPlotLine(pointsLine, 'o');
+			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using SymmetricalDDA
 			pointsLine = Line.SymmetricalDDA(x1, y1, x2, y2);
-			Plotter.printLine(pointsLine);
+			Plotter.printObject(pointsLine);
 			System.out.println("SymmetricalDDA");
-			plotObj.WorldPlotLine(pointsLine, 'o');
+			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using Bresenham's
 			pointsLine = Line.Bresenhams(x1, y1, x2, y2);
-			Plotter.printLine(pointsLine);
+			Plotter.printObject(pointsLine);
 			System.out.println("Bresenham's");
-			plotObj.WorldPlotLine(pointsLine, 'o');
+			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using Midpoint
 			pointsLine = Line.Midpoint(x1, y1, x2, y2);
-			Plotter.printLine(pointsLine);
+			Plotter.printObject(pointsLine);
 			System.out.println("Midpoint");
-			plotObj.WorldPlotLine(pointsLine, 'o');
+			plotObj.WorldPlotObject(pointsLine, 'o');
 
 		}
 
@@ -231,22 +231,22 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			//Calculating circle using DDA
 			System.out.println("DDA");
 			pointsCircle = Circle.DDA(radius);
-			Plotter.printCircle(pointsCircle);
-			plotObj.WorldPlotCircle(pointsCircle, 'd');
+			Plotter.printObject(pointsCircle);
+			plotObj.WorldPlotObject(pointsCircle, 'd');
 			System.out.println();
 
 			//Calculating circle using Bresenham's
 			System.out.println("Bresenham's");
 			pointsCircle = Circle.Bresenhams(radius);
-			Plotter.printCircle(pointsCircle);
-			plotObj.WorldPlotCircle(pointsCircle, 'k');
+			Plotter.printObject(pointsCircle);
+			plotObj.WorldPlotObject(pointsCircle, 'k');
 			System.out.println();
 
 			//Calculating circle using Midpoint
 			System.out.println("Midpoint");
 			pointsCircle = Circle.MidPoint(radius);
-			Plotter.printCircle(pointsCircle);
-			plotObj.WorldPlotCircle(pointsCircle, 'o');
+			Plotter.printObject(pointsCircle);
+			plotObj.WorldPlotObject(pointsCircle, 'o');
 			System.out.println();
 		}
 

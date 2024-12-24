@@ -4,6 +4,7 @@ package Lab_Practicals;
 
 import Base.Point;
 import Base.Plotter;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class Q4_CircleDrawing_Bresenhams {
 			if (max < radius) max = radius;
 		}
 
-		//Initializing point list to store points generated
+		//Initializing point list to store points to be generated
 		List<Point> Circle = new ArrayList<>();
 
 		//Instantiating Plotter object
@@ -61,7 +62,7 @@ public class Q4_CircleDrawing_Bresenhams {
 			}
 
 			//Plotting circle
-			plotObj.WorldPlotCircle(Circle, 'o');
+			plotObj.WorldPlotObject(Circle, 'o');
 		}
 
 		//Displaying circles
