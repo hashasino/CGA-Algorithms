@@ -18,7 +18,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		double epsilon = Math.pow(2, -power);
 
 		//Initializing point list for Octant
-		List<Point> Circle = new ArrayList<>();
+		List<Point> Octant = new ArrayList<>();
 
 		//Initializing loop variables
 		double x = 0;
@@ -26,15 +26,19 @@ public class Circle { //Contains all Circle Drawing Algorithms
 
 		//Calculating the first octant
 		while (x <= y) {
-			Circle.add(new Point(x, y));
+			Octant.add(new Point(x, y));
 			x = x + y * epsilon;
 			y = y - x * epsilon;
 		}
 
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
 		//Generating other octants
-		for (Point point : Circle) {
+		for (Point point : Octant) {
 			int X = (int) (Math.round(point.x));
 			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(X, Y));
 			Circle.add(new Point(Y, X));
 			Circle.add(new Point(Y, -X));
 			Circle.add(new Point(X, -Y));
@@ -51,7 +55,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 	public static List<Point> Bresenhams(int radius) {
 
 		//Initializing point list for Octant
-		List<Point> Circle = new ArrayList<>();
+		List<Point> Octant = new ArrayList<>();
 
 		//Initializing loop variables
 		int x = 0;
@@ -60,7 +64,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 
 		//Calculating the first octant
 		while (x <= y) {
-			Circle.add(new Point(x, y));
+			Octant.add(new Point(x, y));
 			x++;
 			if (decisionParameter < 0) {
 				decisionParameter += 4 * x + 6;
@@ -70,10 +74,14 @@ public class Circle { //Contains all Circle Drawing Algorithms
 			}
 		}
 
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
 		//Generating other octants
-		for (Point point : Circle) {
+		for (Point point : Octant) {
 			int X = (int) (Math.round(point.x));
 			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(X, Y));
 			Circle.add(new Point(Y, X));
 			Circle.add(new Point(Y, -X));
 			Circle.add(new Point(X, -Y));
@@ -90,7 +98,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 	public static List<Point> MidPoint(int radius) {
 
 		//Initializing point list for Octant
-		List<Point> Circle = new ArrayList<>();
+		List<Point> Octant = new ArrayList<>();
 
 		//Initializing loop variables
 		int x = 0;
@@ -99,7 +107,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 
 		//Calculating the first octant
 		while (x <= y) {
-			Circle.add(new Point(x, y));
+			Octant.add(new Point(x, y));
 			x++;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * x + 1;
@@ -109,10 +117,14 @@ public class Circle { //Contains all Circle Drawing Algorithms
 			}
 		}
 
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
 		//Generating other octants
-		for (Point point : Circle) {
+		for (Point point : Octant) {
 			int X = (int) (Math.round(point.x));
 			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(X, Y));
 			Circle.add(new Point(Y, X));
 			Circle.add(new Point(Y, -X));
 			Circle.add(new Point(X, -Y));
