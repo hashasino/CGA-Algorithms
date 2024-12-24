@@ -1,6 +1,7 @@
 package Base;
 
 import Algorithms.*;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,14 +46,14 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 			//Calculating line using SimpleDDA
 			System.out.println("SimpleDDA");
-			PointList = Line.SimpleDDA(x1, y1, x2, y2);
+			PointList = Line.SimpleDDA(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(PointList);
 			System.out.println();
 			Plotter.plotObject(PointList, 'o');
 
 			//Calculating line using SymmetricalDDA
 			System.out.println("SymmetricalDDA");
-			PointList = Line.SymmetricalDDA(x1, y1, x2, y2);
+			PointList = Line.SymmetricalDDA(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(PointList);
 			System.out.println();
 			Plotter.plotObject(PointList, 'o');
@@ -60,7 +61,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 			//Calculating line using Bresenham's
 			System.out.println("Bresenham's");
-			PointList = Line.Bresenhams(x1, y1, x2, y2);
+			PointList = Line.Bresenhams(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(PointList);
 			System.out.println();
 			Plotter.plotObject(PointList, 'o');
@@ -68,7 +69,7 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 
 			//Calculating line using Midpoint
 			System.out.println("Midpoint");
-			PointList = Line.Midpoint(x1, y1, x2, y2);
+			PointList = Line.Midpoint(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(PointList);
 			System.out.println();
 			Plotter.plotObject(PointList, 'o');
@@ -178,25 +179,25 @@ class Test { //Tests for (various methods in the codebase) all methods in the Al
 			System.out.println();
 
 			//Calculating line using SimpleDDA
-			pointsLine = Line.SimpleDDA(x1, y1, x2, y2);
+			pointsLine = Line.SimpleDDA(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(pointsLine);
 			System.out.println("SimpleDDA");
 			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using SymmetricalDDA
-			pointsLine = Line.SymmetricalDDA(x1, y1, x2, y2);
+			pointsLine = Line.SymmetricalDDA(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(pointsLine);
 			System.out.println("SymmetricalDDA");
 			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using Bresenham's
-			pointsLine = Line.Bresenhams(x1, y1, x2, y2);
+			pointsLine = Line.Bresenhams(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(pointsLine);
 			System.out.println("Bresenham's");
 			plotObj.WorldPlotObject(pointsLine, 'o');
 
 			//Calculating line using Midpoint
-			pointsLine = Line.Midpoint(x1, y1, x2, y2);
+			pointsLine = Line.Midpoint(new Point(x1, y1), new Point(x2, y2));
 			Plotter.printObject(pointsLine);
 			System.out.println("Midpoint");
 			plotObj.WorldPlotObject(pointsLine, 'o');

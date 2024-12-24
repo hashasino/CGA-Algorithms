@@ -1,30 +1,31 @@
 package Algorithms;
 
 import Base.Point;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class Line { //Contains all Line Drawing Algorithms
 
 	//SimpleDDA Line Drawing Algorithm
-	public static List<Point> SimpleDDA(int x1, int y1, int x2, int y2) {
+	public static List<Point> SimpleDDA(Point startPoint, Point endPoint) {
 
 		//Calculating line length
-		int delX = x2 - x1;
-		int delY = y2 - y1;
-		int length = Math.max(Math.abs(delX), Math.abs(delY));
+		double delX = endPoint.x - startPoint.x;
+		double delY = endPoint.y - startPoint.y;
+		double length = Math.max(Math.abs(delX), Math.abs(delY));
 
 		// Calculating increment values
-		double xIncrement = (double) delX / length;
-		double yIncrement = (double) delY / length;
+		double xIncrement = delX / length;
+		double yIncrement = delY / length;
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
-		Line.add(new Point(x1, y1)); //Adding starting point
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
+		Line.add(new Point(x, y)); //Adding starting point
 
 		//Calculating line coordinates
 		for (int i = 0; i < length; i++) {
@@ -39,35 +40,35 @@ public class Line { //Contains all Line Drawing Algorithms
 
 	//TODO - Generates extra points that are not on the line when slope is -1
 	//SymmetricalDDA Line Drawing Algorithm
-	public static List<Point> SymmetricalDDA(int x1, int y1, int x2, int y2) {
+	public static List<Point> SymmetricalDDA(Point startPoint, Point endPoint) {
 
 		//Calculating line length
-		int delX = x2 - x1;
-		int delY = y2 - y1;
+		double delX = endPoint.x - startPoint.x;
+		double delY = endPoint.y - startPoint.y;
 		int power = 0;
 		while (Math.pow(2, power) < Math.max(Math.abs(delX), Math.abs(delY))) {
 			power++;
 		}
-		int length = (int) Math.pow(2, power);
+		double length = Math.pow(2, power);
 
 		// Calculating increment values
-		double xIncrement = (double) delX / length;
-		double yIncrement = (double) delY / length;
+		double xIncrement = delX / length;
+		double yIncrement = delY / length;
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
-		Line.add(new Point(x1, y1)); //Adding first point
+		Line.add(new Point(startPoint.x, startPoint.y)); //Adding first point
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
 		Point prevPoint = new Point(x, y), newPoint;
 
 		//Calculating line coordinates
 		for (int i = 1; i <= length; i++) {
 
-			x = x1 + xIncrement * i;
-			y = y1 + yIncrement * i;
+			x = startPoint.x + xIncrement * i;
+			y = startPoint.y + yIncrement * i;
 
 			newPoint = new Point(x, y);
 
@@ -82,45 +83,45 @@ public class Line { //Contains all Line Drawing Algorithms
 	} //End Method
 
 	//Bresenham's Line Drawing Algorithm
-	public static List<Point> Bresenhams(int x1, int y1, int x2, int y2) {
+	public static List<Point> Bresenhams(Point startPoint, Point endPoint) {
 
 		//Calculating delX & delY
-		int delX = Math.abs(x2 - x1);
-		int delY = Math.abs(y2 - y1);
+		double delX = Math.abs(endPoint.x - startPoint.x);
+		double delY = Math.abs(endPoint.y - startPoint.y);
 		boolean isSteep = delY > delX; //Swapping x and y for steep slopes
 		if (isSteep) {
-			int temp = x1;
-			x1 = y1;
-			y1 = temp;
+			double temp = startPoint.x;
+			startPoint.x = startPoint.y;
+			startPoint.y = temp;
 
-			temp = x2;
-			x2 = y2;
-			y2 = temp;
+			temp = endPoint.x;
+			endPoint.x = endPoint.y;
+			endPoint.y = temp;
 
-			delX = Math.abs(x2 - x1);
-			delY = Math.abs(y2 - y1);
+			delX = Math.abs(endPoint.x - startPoint.x);
+			delY = Math.abs(endPoint.y - startPoint.y);
 		}
 
 		//Initializing decision parameter
-		int decisionParameter = 2 * delY - delX;
+		double decisionParameter = 2 * delY - delX;
 
 		//Deciding increment sign+values (-1, 0, 1)
-		int xIncrement = Integer.compare(x2, x1);
-		int yIncrement = Integer.compare(y2, y1);
+		int xIncrement = Double.compare(endPoint.x, startPoint.x);
+		int yIncrement = Double.compare(endPoint.y, startPoint.y);
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 
 		//Adding the first point to the point list
-		if (isSteep) Line.add(new Point(y1, x1));
-		else Line.add(new Point(x1, y1));
+		if (isSteep) Line.add(new Point(startPoint.y, startPoint.x));
+		else Line.add(new Point(startPoint.x, startPoint.y));
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
 
 		//Calculating line coordinates
-		while (x != x2 || y != y2) {
+		while (x != endPoint.x || y != endPoint.y) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * delY;
@@ -137,45 +138,45 @@ public class Line { //Contains all Line Drawing Algorithms
 	} //End Method
 
 	//Midpoint Line Drawing Algorithm
-	public static List<Point> Midpoint(int x1, int y1, int x2, int y2) {
+	public static List<Point> Midpoint(Point startPoint, Point endPoint) {
 
 		//Calculating delX & delY
-		int delX = Math.abs(x2 - x1);
-		int delY = Math.abs(y2 - y1);
+		double delX = Math.abs(endPoint.x - startPoint.x);
+		double delY = Math.abs(endPoint.y - startPoint.y);
 		boolean isSteep = delY > delX; //Swapping x and y for steep slopes
 		if (isSteep) {
-			int temp = x1;
-			x1 = y1;
-			y1 = temp;
+			double temp = startPoint.x;
+			startPoint.x = startPoint.y;
+			startPoint.y = temp;
 
-			temp = x2;
-			x2 = y2;
-			y2 = temp;
+			temp = endPoint.x;
+			endPoint.x = endPoint.y;
+			endPoint.y = temp;
 
-			delX = Math.abs(x2 - x1);
-			delY = Math.abs(y2 - y1);
+			delX = Math.abs(endPoint.x - startPoint.x);
+			delY = Math.abs(endPoint.y - startPoint.y);
 		}
 
 		//Initializing the decision parameter
-		int decisionParameter = delY - (delX / 2);
+		double decisionParameter = delY - (delX / 2);
 
 		//Deciding increment sign+values (-1, 0, 1)
-		int xIncrement = Integer.compare(x2, x1);
-		int yIncrement = Integer.compare(y2, y1);
+		int xIncrement = Double.compare(endPoint.x, startPoint.x);
+		int yIncrement = Double.compare(endPoint.y, startPoint.y);
 
 		//Initializing point list for Line
 		List<Point> Line = new ArrayList<>();
 
 		//Adding the first point to the point list
-		if (isSteep) Line.add(new Point(y1, x1));
-		else Line.add(new Point(x1, y1));
+		if (isSteep) Line.add(new Point(startPoint.y, startPoint.x));
+		else Line.add(new Point(startPoint.x, startPoint.y));
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
 
 		//Calculating line coordinates
-		while (x != x2 || y != y2) {
+		while (x != endPoint.x || y != endPoint.y) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += delY;

@@ -1,9 +1,9 @@
 package Base;
 
 public class Point { //The basic point class/blueprint
-	public final double x;
-	public final double y;
-	public final double z;
+	public double x;
+	public double y;
+	public double z;
 	boolean PointIs2D = false;
 
 	//Constructor for 2D point

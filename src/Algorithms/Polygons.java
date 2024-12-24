@@ -28,10 +28,10 @@ public class Polygons {
 
 		//Generating the first n-1 sides for polygon
 		for (int i = 0; i < number_of_sides - 1; i++) {
-			Polygon.addAll(Line.Midpoint(vertex_X[i], vertex_Y[i], vertex_X[i + 1], vertex_Y[i + 1]));
+			Polygon.addAll(Line.Midpoint(new Point(vertex_X[i], vertex_Y[i]), new Point(vertex_X[i + 1], vertex_Y[i + 1])));
 		}
 		//Generating the nᵗʰ side for polygon
-		Polygon.addAll(Line.Midpoint(vertex_X[number_of_sides - 1], vertex_Y[number_of_sides - 1], vertex_X[0], vertex_Y[0]));
+		Polygon.addAll(Line.Midpoint(new Point(vertex_X[number_of_sides - 1], vertex_Y[number_of_sides - 1]), new Point(vertex_X[0], vertex_Y[0])));
 
 		return Polygon;
 	}

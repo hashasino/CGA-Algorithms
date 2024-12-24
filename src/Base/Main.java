@@ -1,9 +1,10 @@
 package Base;
 
 import Algorithms.*;
+
 import java.util.Scanner;
 
-class Main { //The Main Program Interface
+class Main { //The Main Executable Program
 	public static void main(String[] args) {
 
 		//Initializing Scanner object
@@ -72,13 +73,13 @@ class Main { //The Main Program Interface
 			System.out.println("  Line coordinates:");
 			switch (choice) {
 				case 1:
-					Line.SimpleDDA(x1, y1, x2, y2);
+					Line.SimpleDDA(new Point(x1, y1), new Point(x2, y2));
 					break;
 				case 2:
-					Line.SymmetricalDDA(x1, y1, x2, y2);
+					Line.SymmetricalDDA(new Point(x1, y1), new Point(x2, y2));
 					break;
 				case 3:
-					Line.Bresenhams(x1, y1, x2, y2);
+					Line.Bresenhams(new Point(x1, y1), new Point(x2, y2));
 					break;
 				case 4:
 					Circle.DDA(x1);
