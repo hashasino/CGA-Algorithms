@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Polygons {
+
+	//Algorithm to draw regular polygons
 	public static List<Point> Polygon(int number_of_sides, int side_length) {
 
 		//Calculating the radius of the circle circumscribing the polygon

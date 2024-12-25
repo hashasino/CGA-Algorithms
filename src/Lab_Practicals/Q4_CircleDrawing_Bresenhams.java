@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Q4_CircleDrawing_Bresenhams {
 	public static void main(String[] args) {
-
 		//Program Declaration
 		System.out.println("This is a program to display a series of concentric circles of varying radius using Bresenham's Circle Drawing Algorithm.");
 
@@ -35,52 +34,56 @@ public class Q4_CircleDrawing_Bresenhams {
 			if (maxRadius < radius) maxRadius = radius;
 		}
 
-		//Instantiating Plotter object
+		//Instantiating Plotter object of maxRadius
 		Plotter plotObj = new Plotter(2 * maxRadius + 1, 2 * maxRadius + 1);
 
 		//Drawing circles
-		for (int i = 0; i < circle; i++) {
-
-			//Initializing point list for Octant
-			List<Point> Octant = new ArrayList<>();
-
-			//Initializing inner loop variables
-			int x = 0;
-			int y = radii[i];
-			int decisionParameter = 3 - 2 * radii[i];
-
-			//Calculating the first octant
-			while (x <= y) {
-				Octant.add(new Point(x, y));
-				x++;
-				if (decisionParameter < 0) {
-					decisionParameter += 4 * x + 6;
-				} else {
-					y--;
-					decisionParameter += 4 * (x - y) + 10;
-				}
-			}
-
-			//Initializing point list for Circle
-			List<Point> Circle = new ArrayList<>();
-
-			//Generating other octants
-			for (Point point : Octant) {
-				Circle.add(new Point(point.x, point.y));
-				Circle.add(new Point(point.y, point.x));
-				Circle.add(new Point(point.y, -point.x));
-				Circle.add(new Point(point.x, -point.y));
-				Circle.add(new Point(-point.x, -point.y));
-				Circle.add(new Point(-point.y, -point.x));
-				Circle.add(new Point(-point.y, point.x));
-				Circle.add(new Point(-point.x, point.y));
-			}
-
-			//Plotting circle
-			plotObj.WorldPlotObject(Circle, 'o');
-		}
+		for (int i = 0; i < circle; i++)
+			plotObj.WorldPlotObject(BresenhamsCircle(radii[i]), 'o');
 
 		//Displaying circles
 		plotObj.WorldDisplay();
+
+	}
+
+	//Bresenham's Circle Drawing Algorithm
+	public static List<Point> BresenhamsCircle(int radius) {
+
+		//Initializing point list for Octant
+		List<Point> Octant = new ArrayList<>();
+
+		//Initializing loop variables
+		int x = 0;
+		int y = radius;
+		int decisionParameter = 3 - 2 * radius;
+
+		//Calculating the first octant
+		while (x <= y) {
+			Octant.add(new Point(x, y));
+			x++;
+			if (decisionParameter < 0) {
+				decisionParameter += 4 * x + 6;
+			} else {
+				y--;
+				decisionParameter += 4 * (x - y) + 10;
+			}
+		}
+
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
+		//Generating other octants
+		for (Point point : Octant) {
+			Circle.add(new Point(point.x, point.y));
+			Circle.add(new Point(point.y, point.x));
+			Circle.add(new Point(point.y, -point.x));
+			Circle.add(new Point(point.x, -point.y));
+			Circle.add(new Point(-point.x, -point.y));
+			Circle.add(new Point(-point.y, -point.x));
+			Circle.add(new Point(-point.y, point.x));
+			Circle.add(new Point(-point.x, point.y));
+		}
+
+		return Circle;
 	}
 }

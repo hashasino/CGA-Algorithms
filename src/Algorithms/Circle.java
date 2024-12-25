@@ -17,14 +17,14 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		for (int i : testAngles) {
 			System.out.println("  Angle - " + i);
 //			Plotter.plotObject(Arc(i, 10, new Point(0, 10)), '0');
-//			Plotter.plotObject(Sector(i, testRadii[1], new Point(0, testRadii[1])), '0');
+			Plotter.plotObject(Sector(i, testRadii[1], new Point(0, testRadii[1])), '0');
 			System.out.println();
 		}
 
 		for (int i : testRadii) {
 			System.out.println("  Radius - " + i);
 //			Plotter.plotObject(DDA(i), '0');
-			Plotter.plotObject(Bresenhams(i), '0');
+//			Plotter.plotObject(Bresenhams(i), '0');
 //			Plotter.plotObject(MidPoint(i), '0');
 			System.out.println();
 		}
@@ -61,6 +61,7 @@ public class Circle { //Contains all Circle Drawing Algorithms
 		return Arc;
 	}
 
+	//FIXME - PRIORITY! Find a way to find centerPoint of the circle & implement it in Sector
 	//For drawing sectors
 	public static List<Point> Sector(double angle, int radius, Point startPoint) {
 

@@ -119,6 +119,8 @@ public class Line { //Contains all Line Drawing Algorithms
 		//Initializing loop variables
 		double x = startPoint.x;
 		double y = startPoint.y;
+		endPoint.x = Math.round(endPoint.x);
+		endPoint.y = Math.round(endPoint.y);
 
 		//Calculating line coordinates
 		while ((int) x != endPoint.x || (int) y != endPoint.y) {

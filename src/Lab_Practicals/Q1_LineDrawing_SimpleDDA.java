@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Q1_LineDrawing_SimpleDDA {
 	public static void main(String[] args) {
-
 		//Program Declaration
 		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using DDA Line Drawing Algorithm.");
 
@@ -23,8 +22,15 @@ public class Q1_LineDrawing_SimpleDDA {
 		Point startPoint = new Point(scan.nextInt(), scan.nextInt());
 		Point endPoint = new Point(scan.nextInt(), scan.nextInt());
 
-		//Initializing point list to store points to be generated
-		List<Point> Line = new ArrayList<>();
+		//Printing & plotting line coordinates
+		List<Point> Line = SimpleDDALine(startPoint, endPoint);
+		Plotter.printObject(Line);
+		System.out.println();
+		Plotter.plotObject(Line, 'o');
+	}
+
+	//SimpleDDA Line Drawing Algorithm
+	public static List<Point> SimpleDDALine(Point startPoint, Point endPoint) {
 
 		//Calculating line length
 		double delX = endPoint.x - startPoint.x;
@@ -34,6 +40,9 @@ public class Q1_LineDrawing_SimpleDDA {
 		// Calculating increment values
 		double xIncrement = delX / length;
 		double yIncrement = delY / length;
+
+		//Initializing point list for Line
+		List<Point> Line = new ArrayList<>();
 
 		//Initializing loop variables
 		double x = startPoint.x;
@@ -47,10 +56,8 @@ public class Q1_LineDrawing_SimpleDDA {
 			Line.add(new Point(x, y));
 		}
 
-		//Plotting the line
-		Plotter.printObject(Line);
-		System.out.println();
-		Plotter.plotObject(Line, 'o');
+		return Line;
+
 	}
 
 }

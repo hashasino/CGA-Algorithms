@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Q5_LineDrawing_Midpoint {
 	public static void main(String[] args) {
-
 		//Program Declaration
 		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using Midpoint Line Drawing Algorithm.");
 
@@ -23,8 +22,15 @@ public class Q5_LineDrawing_Midpoint {
 		Point startPoint = new Point(scan.nextInt(), scan.nextInt());
 		Point endPoint = new Point(scan.nextInt(), scan.nextInt());
 
-		//Initializing point list to store points generated
-		List<Point> Line = new ArrayList<>();
+		//Printing & plotting line coordinates
+		List<Point> Line = MidpointLine(startPoint, endPoint);
+		Plotter.printObject(Line);
+		System.out.println();
+		Plotter.plotObject(Line, '*');
+	}
+
+	//Midpoint Line Drawing Algorithm
+	public static List<Point> MidpointLine(Point startPoint, Point endPoint) {
 
 		//Calculating delX & delY
 		double delX = Math.abs(endPoint.x - startPoint.x);
@@ -50,6 +56,9 @@ public class Q5_LineDrawing_Midpoint {
 		int xIncrement = Double.compare(endPoint.x, startPoint.x);
 		int yIncrement = Double.compare(endPoint.y, startPoint.y);
 
+		//Initializing point list for Line
+		List<Point> Line = new ArrayList<>();
+
 		//Adding the first point to the point list
 		if (isSteep) Line.add(new Point(startPoint.y, startPoint.x));
 		else Line.add(new Point(startPoint.x, startPoint.y));
@@ -73,9 +82,8 @@ public class Q5_LineDrawing_Midpoint {
 			else Line.add(new Point(x, y));
 		}
 
-		//Plotting the line
-		Plotter.printObject(Line);
-		System.out.println();
-		Plotter.plotObject(Line, '*');
+		return Line;
+
 	}
+
 }

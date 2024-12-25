@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Q6_CircleDrawing_DDA {
 	public static void main(String[] args) {
-
 		//Program Declaration
 		System.out.println("This is a program for circle drawing as Raster Graphics Display using DDA Circle Drawing Algorithm.");
 
@@ -21,6 +20,13 @@ public class Q6_CircleDrawing_DDA {
 		//Taking input for circle radius
 		System.out.println("- Enter radius for the circle: ");
 		int radius = scan.nextInt();
+
+		//Drawing the circle
+		Plotter.plotObject(DDA(radius), 'o');
+	}
+
+	//DDA Circle Drawing Algorithm
+	public static List<Point> DDA(int radius) {
 
 		//Finding epsilon
 		int power = 0;
@@ -60,7 +66,7 @@ public class Q6_CircleDrawing_DDA {
 			Circle.add(new Point(-X, Y));
 		}
 
-		//Plotting the circle
-		Plotter.plotObject(Circle, 'o');
+		return Circle;
 	}
+
 }
