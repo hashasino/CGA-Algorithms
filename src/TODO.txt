@@ -1,6 +1,6 @@
 TODO :
  - in Algorithms: Make it so you can give the starting/center point as a parameter for Drawing Algorithms. Also add default values for them in case someone wants to skip that
- - Make sure that the Point(x,y,z) values are rounded only when plotting & when required for index call
+ - Analyse usage for Point objects & either convert all to double & round only when plotting, or use int everywhere possible to save on memory/resources
  - Also, maybe add back the displayCharacter for Point class..?
  - Move all tests from Test.java into each algorithm's own main function. Then delete it.
  - Write various public methods to implement Data Hiding/Abstraction for all classes

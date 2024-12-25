@@ -7,14 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Circle { //Contains all Circle Drawing Algorithms
+
+	//For testing purposes
 	public static void main(String[] args) {
 
-		int[] angles = {0, 45, 90, 135, 180, 225, 270, 315, 360};
+		int[] testRadii = {5, 9, 15, 21};
+		int[] testAngles = {0, 45, 90, 135, 180, 225, 270, 315, 360};
 
-		for (int i : angles) {
+		for (int i : testAngles) {
 			System.out.println("  Angle - " + i);
 //			Plotter.plotObject(Arc(i, 10, new Point(0, 10)), '0');
-			Plotter.plotObject(Sector(i, 10, new Point(0, 10)), '0');
+//			Plotter.plotObject(Sector(i, testRadii[1], new Point(0, testRadii[1])), '0');
+			System.out.println();
+		}
+
+		for (int i : testRadii) {
+			System.out.println("  Radius - " + i);
+//			Plotter.plotObject(DDA(i), '0');
+			Plotter.plotObject(Bresenhams(i), '0');
+//			Plotter.plotObject(MidPoint(i), '0');
 			System.out.println();
 		}
 	}
@@ -142,16 +153,14 @@ public class Circle { //Contains all Circle Drawing Algorithms
 
 		//Generating other octants
 		for (Point point : Octant) {
-			int X = (int) (Math.round(point.x));
-			int Y = (int) (Math.round(point.y));
-			Circle.add(new Point(X, Y));
-			Circle.add(new Point(Y, X));
-			Circle.add(new Point(Y, -X));
-			Circle.add(new Point(X, -Y));
-			Circle.add(new Point(-X, -Y));
-			Circle.add(new Point(-Y, -X));
-			Circle.add(new Point(-Y, X));
-			Circle.add(new Point(-X, Y));
+			Circle.add(new Point(point.x, point.y));
+			Circle.add(new Point(point.y, point.x));
+			Circle.add(new Point(point.y, -point.x));
+			Circle.add(new Point(point.x, -point.y));
+			Circle.add(new Point(-point.x, -point.y));
+			Circle.add(new Point(-point.y, -point.x));
+			Circle.add(new Point(-point.y, point.x));
+			Circle.add(new Point(-point.x, point.y));
 		}
 
 		return Circle;

@@ -19,29 +19,26 @@ public class Q1_LineDrawing_SimpleDDA {
 		Scanner scan = new Scanner(System.in);
 
 		//Taking input for the parameters for the chosen algorithm
-		System.out.println("Input start & end coordinates in the following format: x1 y1 x2 y2");
-		int x1 = scan.nextInt();
-		int y1 = scan.nextInt();
-		int x2 = scan.nextInt();
-		int y2 = scan.nextInt();
+		System.out.println("- Input start & end coordinates in the following format: x1 y1 x2 y2");
+		Point startPoint = new Point(scan.nextInt(), scan.nextInt());
+		Point endPoint = new Point(scan.nextInt(), scan.nextInt());
 
 		//Initializing point list to store points to be generated
 		List<Point> Line = new ArrayList<>();
 
 		//Calculating line length
-		int delX = x2 - x1;
-		int delY = y2 - y1;
-		int length = Math.max(Math.abs(delX), Math.abs(delY));
+		double delX = endPoint.x - startPoint.x;
+		double delY = endPoint.y - startPoint.y;
+		double length = Math.max(Math.abs(delX), Math.abs(delY));
 
 		// Calculating increment values
-		double xIncrement = (double) delX / length;
-		double yIncrement = (double) delY / length;
-
-		Line.add(new Point(x1, y1)); //Adding starting point
+		double xIncrement = delX / length;
+		double yIncrement = delY / length;
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
+		Line.add(new Point(x, y)); //Adding starting point
 
 		//Calculating line coordinates
 		for (int i = 0; i < length; i++) {

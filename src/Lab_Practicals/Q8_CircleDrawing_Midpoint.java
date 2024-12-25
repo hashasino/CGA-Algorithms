@@ -13,7 +13,7 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 	public static void main(String[] args) {
 
 		//Program Declaration
-		System.out.println("This is a program to drawing a circle, an arc & a sector using Midpoint Circle Drawing Algorithm.");
+		System.out.println("- This is a program to drawing a circle, an arc & a sector using Midpoint Circle Drawing Algorithm.");
 
 		//Instantiating Scanner object
 		Scanner scan = new Scanner(System.in);
@@ -22,8 +22,8 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 		System.out.println("Enter radius for the circle: ");
 		int radius = scan.nextInt();
 
-		//Initializing point list to store points generated
-		List<Point> Circle = new ArrayList<>();
+		//Initializing point list for Octant
+		List<Point> Octant = new ArrayList<>();
 
 		//Initializing loop variables
 		int x = 0;
@@ -32,7 +32,7 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 
 		//Calculating the first octant
 		while (x <= y) {
-			Circle.add(new Point(x, y));
+			Octant.add(new Point(x, y));
 			x++;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * x + 1;
@@ -40,6 +40,23 @@ public class Q8_CircleDrawing_Midpoint { //TODO - Add methods to draw arc & sect
 				y--;
 				decisionParameter += 2 * (x - y) + 1;
 			}
+		}
+
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
+		//Generating other octants
+		for (Point point : Octant) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(X, Y));
+			Circle.add(new Point(Y, X));
+			Circle.add(new Point(Y, -X));
+			Circle.add(new Point(X, -Y));
+			Circle.add(new Point(-X, -Y));
+			Circle.add(new Point(-Y, -X));
+			Circle.add(new Point(-Y, X));
+			Circle.add(new Point(-X, Y));
 		}
 
 		//Plotting the circle

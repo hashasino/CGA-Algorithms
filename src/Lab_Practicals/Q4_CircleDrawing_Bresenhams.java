@@ -19,7 +19,7 @@ public class Q4_CircleDrawing_Bresenhams {
 		Scanner scan = new Scanner(System.in);
 
 		//Taking input for number of concentric circles
-		System.out.println("How many concentric circles do you want?");
+		System.out.println("- How many concentric circles do you want?");
 		int circle = scan.nextInt();
 
 		//Taking input for the radii of the concentric circles
@@ -30,19 +30,19 @@ public class Q4_CircleDrawing_Bresenhams {
 		}
 
 		//Finding maximum of the radii
-		int max = 0;
+		int maxRadius = 0;
 		for (int radius : radii) {
-			if (max < radius) max = radius;
+			if (maxRadius < radius) maxRadius = radius;
 		}
 
-		//Initializing point list to store points to be generated
-		List<Point> Circle = new ArrayList<>();
-
 		//Instantiating Plotter object
-		Plotter plotObj = new Plotter(max * 2 + 1, max * 2 + 1);
+		Plotter plotObj = new Plotter(2 * maxRadius + 1, 2 * maxRadius + 1);
 
 		//Drawing circles
 		for (int i = 0; i < circle; i++) {
+
+			//Initializing point list for Octant
+			List<Point> Octant = new ArrayList<>();
 
 			//Initializing inner loop variables
 			int x = 0;
@@ -51,7 +51,7 @@ public class Q4_CircleDrawing_Bresenhams {
 
 			//Calculating the first octant
 			while (x <= y) {
-				Circle.add(new Point(x, y));
+				Octant.add(new Point(x, y));
 				x++;
 				if (decisionParameter < 0) {
 					decisionParameter += 4 * x + 6;
@@ -59,6 +59,21 @@ public class Q4_CircleDrawing_Bresenhams {
 					y--;
 					decisionParameter += 4 * (x - y) + 10;
 				}
+			}
+
+			//Initializing point list for Circle
+			List<Point> Circle = new ArrayList<>();
+
+			//Generating other octants
+			for (Point point : Octant) {
+				Circle.add(new Point(point.x, point.y));
+				Circle.add(new Point(point.y, point.x));
+				Circle.add(new Point(point.y, -point.x));
+				Circle.add(new Point(point.x, -point.y));
+				Circle.add(new Point(-point.x, -point.y));
+				Circle.add(new Point(-point.y, -point.x));
+				Circle.add(new Point(-point.y, point.x));
+				Circle.add(new Point(-point.x, point.y));
 			}
 
 			//Plotting circle

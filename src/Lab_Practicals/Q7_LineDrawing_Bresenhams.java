@@ -19,51 +19,47 @@ public class Q7_LineDrawing_Bresenhams {
 		Scanner scan = new Scanner(System.in);
 
 		//Taking input for the parameters for the chosen algorithm
-		System.out.println("Input start & end coordinates in the following format: x1 y1 x2 y2");
-		int x1 = scan.nextInt();
-		int y1 = scan.nextInt();
-		int x2 = scan.nextInt();
-		int y2 = scan.nextInt();
+		System.out.println("- Input start & end coordinates in the following format: x1 y1 x2 y2");
+		Point startPoint = new Point(scan.nextInt(), scan.nextInt());
+		Point endPoint = new Point(scan.nextInt(), scan.nextInt());
 
 		//Initializing point list to store points generated
 		List<Point> Line = new ArrayList<>();
 
 		//Calculating delX & delY
-		int delX = Math.abs(x2 - x1);
-		int delY = Math.abs(y2 - y1);
-
-		// Swapping x and y for steep slopes
-		boolean isSteep = delY > delX;
+		double delX = Math.abs(endPoint.x - startPoint.x);
+		double delY = Math.abs(endPoint.y - startPoint.y);
+		boolean isSteep = delY > delX; //Swapping x and y for steep slopes
 		if (isSteep) {
-			int temp = x1;
-			x1 = y1;
-			y1 = temp;
+			double temp = startPoint.x;
+			startPoint.x = startPoint.y;
+			startPoint.y = temp;
 
-			temp = x2;
-			x2 = y2;
-			y2 = temp;
+			temp = endPoint.x;
+			endPoint.x = endPoint.y;
+			endPoint.y = temp;
 
-			delX = Math.abs(x2 - x1);
-			delY = Math.abs(y2 - y1);
+			delX = Math.abs(endPoint.x - startPoint.x);
+			delY = Math.abs(endPoint.y - startPoint.y);
 		}
 
 		//Initializing decision parameter
-		int decisionParameter = 2 * delY - delX;
+		double decisionParameter = 2 * delY - delX;
 
 		//Deciding increment sign+values (-1, 0, 1)
-		int xIncrement = Integer.compare(x2, x1);
-		int yIncrement = Integer.compare(y2, y1);
+		int xIncrement = Double.compare(endPoint.x, startPoint.x);
+		int yIncrement = Double.compare(endPoint.y, startPoint.y);
 
 		//Adding the first point to the point list
-		if (isSteep) Line.add(new Point(y1, x1));
-		else Line.add(new Point(x1, y1));
+		if (isSteep) Line.add(new Point(startPoint.y, startPoint.x));
+		else Line.add(new Point(startPoint.x, startPoint.y));
 
 		//Initializing loop variables
-		double x = x1;
-		double y = y1;
+		double x = startPoint.x;
+		double y = startPoint.y;
 
 		//Calculating line coordinates
-		while (x != x2 || y != y2) {
+		while ((int) x != endPoint.x || (int) y != endPoint.y) {
 			x = x + xIncrement;
 			if (decisionParameter < 0) {
 				decisionParameter += 2 * delY;

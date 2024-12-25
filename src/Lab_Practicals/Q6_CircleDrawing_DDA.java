@@ -13,17 +13,14 @@ public class Q6_CircleDrawing_DDA {
 	public static void main(String[] args) {
 
 		//Program Declaration
-		System.out.println("This is a program to display a series of concentric circles of varying radius using DDA Circle Drawing Algorithm.");
+		System.out.println("This is a program for circle drawing as Raster Graphics Display using DDA Circle Drawing Algorithm.");
 
 		//Instantiating Scanner object
 		Scanner scan = new Scanner(System.in);
 
 		//Taking input for circle radius
-		System.out.println("Enter radius for the circle: ");
+		System.out.println("- Enter radius for the circle: ");
 		int radius = scan.nextInt();
-
-		//Initializing point list to store points to be generated
-		List<Point> Circle = new ArrayList<>();
 
 		//Finding epsilon
 		int power = 0;
@@ -32,15 +29,35 @@ public class Q6_CircleDrawing_DDA {
 		}
 		double epsilon = Math.pow(2, -power);
 
+		//Initializing point list for Octant
+		List<Point> Octant = new ArrayList<>();
+
 		//Initializing loop variables
 		double x = 0;
 		double y = radius;
 
 		//Calculating the first octant
 		while (x <= y) {
-			Circle.add(new Point(x, y));
+			Octant.add(new Point(x, y));
 			x = x + y * epsilon;
 			y = y - x * epsilon;
+		}
+
+		//Initializing point list for Circle
+		List<Point> Circle = new ArrayList<>();
+
+		//Generating other octants
+		for (Point point : Octant) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			Circle.add(new Point(X, Y));
+			Circle.add(new Point(Y, X));
+			Circle.add(new Point(Y, -X));
+			Circle.add(new Point(X, -Y));
+			Circle.add(new Point(-X, -Y));
+			Circle.add(new Point(-Y, -X));
+			Circle.add(new Point(-Y, X));
+			Circle.add(new Point(-X, Y));
 		}
 
 		//Plotting the circle

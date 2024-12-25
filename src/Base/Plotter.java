@@ -78,11 +78,6 @@ public class Plotter { //Contains methods to print & plot objects
 		return grid;
 	}
 
-	// To check if the point to be plotted is within World Grid
-	private boolean isValidCoordinate(int x, int y) {
-		return x >= 0 && x < width && y >= 0 && y < height;
-	}
-
 	//To print object coordinates
 	public static void printObject(List<Point> Object) {
 		for (Point point : Object) {
@@ -132,19 +127,14 @@ public class Plotter { //Contains methods to print & plot objects
 		}
 	}
 
-	//To plot a point in the World Grid
-	public void WorldPlotPoint(Point Point, char character) {
-		int X = (int) (Math.round(Point.x));
-		int Y = (int) (Math.round(Point.y));
-		if (isValidCoordinate(X, Y)) {
-			World[centerX + X][centerY - Y] = String.valueOf(character);
-		}
-	}
-
 	//To plot objects in the World Grid
 	public void WorldPlotObject(List<Point> Object, char character) {
 		for (Point point : Object) {
-			WorldPlotPoint(point, character);
+//		if (Point.x <= centerX && Point.y <= centerY) {
+			int X = (int) (Math.round(point.x));
+			int Y = (int) (Math.round(point.y));
+			World[centerX + X][centerY - Y] = String.valueOf(character);
+//		}
 		}
 	}
 
@@ -153,15 +143,10 @@ public class Plotter { //Contains methods to print & plot objects
 		for (int j = 0; j < height; j++) {
 			for (int i = 0; i < width; i++) {
 				String cell = World[i][j];
-				System.out.printf("%4s", cell);
+				System.out.printf("%3s", cell);
 			}
 			System.out.println();
 		}
-	}
-
-	//To clear a point in World Grid
-	public void ClearPoint(Point Point) {
-		WorldPlotPoint(Point, '.');
 	}
 
 	//To clear objects in World Grid
