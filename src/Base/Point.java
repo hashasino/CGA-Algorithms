@@ -1,6 +1,7 @@
 package Base;
 
 public class Point { //The basic point class/blueprint
+
 	public double x;
 	public double y;
 	public double z;
@@ -23,9 +24,9 @@ public class Point { //The basic point class/blueprint
 
 	//To get coordinate value as a string
 	public String getCoordinates() {
-		long x = Math.round(this.x);
-		long y = Math.round(this.y);
-		long z = Math.round(this.z);
+		int x = (int) Math.round(this.x);
+		int y = (int) Math.round(this.y);
+		int z = (int) Math.round(this.z);
 
 		if (PointIs2D)
 			return "(" + x + "," + y + ")";

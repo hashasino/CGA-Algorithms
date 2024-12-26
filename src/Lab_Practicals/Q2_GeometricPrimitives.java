@@ -8,9 +8,87 @@ import Base.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-// We define the basic 2D geometrics primitives as: points, lines, arcs, sectors & polygons.
+// The basic 2D geometrics primitives are defines as: points, lines, arcs, sectors & polygons.
 
 public class Q2_GeometricPrimitives {
+	public static void main(String[] args) {
+	} /*{
+		Scanner scanner = new Scanner(System.in);
+		Q2_GeometricPrimitives canvas = new Q2_GeometricPrimitives(40, 20);
+
+		while (true) {
+			System.out.println("\nGeometric Lab_Practicals.Primitives Drawing Program");
+			System.out.println("1. Draw Base.Point");
+			System.out.println("2. Draw Algorithms.Line");
+			System.out.println("3. Draw Rectangle");
+			System.out.println("4. Draw Algorithms.Circle");
+			System.out.println("5. Clear Canvas");
+			System.out.println("6. Exit");
+			System.out.print("Enter your choice: ");
+
+			int choice = scanner.nextInt();
+
+			switch (choice) {
+				case 1:
+					System.out.print("Enter x coordinate: ");
+					int pointX = scanner.nextInt();
+					System.out.print("Enter y coordinate: ");
+					int pointY = scanner.nextInt();
+					canvas.drawPoint(pointX, pointY);
+					break;
+
+				case 2:
+					System.out.print("Enter start x: ");
+					int x0 = scanner.nextInt();
+					System.out.print("Enter start y: ");
+					int y0 = scanner.nextInt();
+					System.out.print("Enter end x: ");
+					int x1 = scanner.nextInt();
+					System.out.print("Enter end y: ");
+					int y1 = scanner.nextInt();
+					canvas.drawLine(x0, y0, x1, y1);
+					break;
+
+				case 3:
+					System.out.print("Enter top-left x: ");
+					int rectX = scanner.nextInt();
+					System.out.print("Enter top-left y: ");
+					int rectY = scanner.nextInt();
+					System.out.print("Enter width: ");
+					int rectWidth = scanner.nextInt();
+					System.out.print("Enter height: ");
+					int rectHeight = scanner.nextInt();
+					canvas.drawRectangle(rectX, rectY, rectWidth, rectHeight);
+					break;
+
+				case 4:
+					System.out.print("Enter center x: ");
+					int centerX = scanner.nextInt();
+					System.out.print("Enter center y: ");
+					int centerY = scanner.nextInt();
+					System.out.print("Enter radius: ");
+					int radius = scanner.nextInt();
+					canvas.drawCircle(centerX, centerY, radius);
+					break;
+
+				case 5:
+					canvas.clear();
+					System.out.println("Canvas cleared.");
+					break;
+
+				case 6:
+					System.out.println("Exiting program.");
+					scanner.close();
+					System.exit(0);
+
+				default:
+					System.out.println("Invalid choice. Try again.");
+			}
+
+			// Display the current state of the canvas
+			canvas.display();
+		}
+	}*/
 
 	//Arc Drawing Algorithm using parametric functions
 	public static List<Point> Arc(double angle, int radius, Point startPoint) {
@@ -93,83 +171,5 @@ public class Q2_GeometricPrimitives {
 		return Polygon;
 	}
 
-	public static void main(String[] args) {
-	}/*{
-		Scanner scanner = new Scanner(System.in);
-		Q2_GeometricPrimitives canvas = new Q2_GeometricPrimitives(40, 20);
-
-		while (true) {
-			System.out.println("\nGeometric Lab_Practicals.Primitives Drawing Program");
-			System.out.println("1. Draw Base.Point");
-			System.out.println("2. Draw Algorithms.Line");
-			System.out.println("3. Draw Rectangle");
-			System.out.println("4. Draw Algorithms.Circle");
-			System.out.println("5. Clear Canvas");
-			System.out.println("6. Exit");
-			System.out.print("Enter your choice: ");
-
-			int choice = scanner.nextInt();
-
-			switch (choice) {
-				case 1:
-					System.out.print("Enter x coordinate: ");
-					int pointX = scanner.nextInt();
-					System.out.print("Enter y coordinate: ");
-					int pointY = scanner.nextInt();
-					canvas.drawPoint(pointX, pointY);
-					break;
-
-				case 2:
-					System.out.print("Enter start x: ");
-					int x0 = scanner.nextInt();
-					System.out.print("Enter start y: ");
-					int y0 = scanner.nextInt();
-					System.out.print("Enter end x: ");
-					int x1 = scanner.nextInt();
-					System.out.print("Enter end y: ");
-					int y1 = scanner.nextInt();
-					canvas.drawLine(x0, y0, x1, y1);
-					break;
-
-				case 3:
-					System.out.print("Enter top-left x: ");
-					int rectX = scanner.nextInt();
-					System.out.print("Enter top-left y: ");
-					int rectY = scanner.nextInt();
-					System.out.print("Enter width: ");
-					int rectWidth = scanner.nextInt();
-					System.out.print("Enter height: ");
-					int rectHeight = scanner.nextInt();
-					canvas.drawRectangle(rectX, rectY, rectWidth, rectHeight);
-					break;
-
-				case 4:
-					System.out.print("Enter center x: ");
-					int centerX = scanner.nextInt();
-					System.out.print("Enter center y: ");
-					int centerY = scanner.nextInt();
-					System.out.print("Enter radius: ");
-					int radius = scanner.nextInt();
-					canvas.drawCircle(centerX, centerY, radius);
-					break;
-
-				case 5:
-					canvas.clear();
-					System.out.println("Canvas cleared.");
-					break;
-
-				case 6:
-					System.out.println("Exiting program.");
-					scanner.close();
-					System.exit(0);
-
-				default:
-					System.out.println("Invalid choice. Try again.");
-			}
-
-			// Display the current state of the canvas
-			canvas.display();
-		}
-	}*/
 
 }

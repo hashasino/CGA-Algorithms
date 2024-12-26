@@ -10,11 +10,11 @@ public class Plotter { //Contains methods to print & plot objects
 	private final int centerY;
 
 	public Plotter(int width, int height) {
-		this.width = width;
-		this.height = height;
-		this.World = initializeWorldGrid(width, height);
-		this.centerX = width / 2;
-		this.centerY = height / 2;
+		this.width = width * 2 + 1;
+		this.height = height * 2 + 1;
+		this.World = initializeWorldGrid(this.width, this.height);
+		this.centerX = this.width / 2;
+		this.centerY = this.height / 2;
 	}
 
 	//To initialize grid for plotting a single object
