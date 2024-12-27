@@ -50,7 +50,8 @@ public class Q8_CircleDrawing_Midpoint {
 					Plotter.plotObject(MidpointCircle(radius), '0');
 					break;
 				case 0:
-					return;
+					scan.close();
+					System.exit(0);
 				default:
 					System.out.println("Invalid input. Try again.");
 

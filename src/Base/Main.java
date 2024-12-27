@@ -7,7 +7,7 @@ import java.util.Scanner;
 class Main { //The Main Executable Program
 	public static void main(String[] args) {
 
-		//Initializing Scanner object
+		//Instantiating Scanner object
 		Scanner scan = new Scanner(System.in);
 
 		//Initializing condition variables

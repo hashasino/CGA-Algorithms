@@ -3,92 +3,112 @@ package Lab_Practicals;
 // Q2. Write a program to display basic 2D geometric primitives.
 
 import Algorithms.Line;
+import Base.Plotter;
 import Base.Point;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-// The basic 2D geometrics primitives are defines as: points, lines, arcs, sectors & polygons.
+// The basic 2D geometrics primitives are defined as: points, lines, arcs, sectors & polygons.
 
 public class Q2_GeometricPrimitives {
 	public static void main(String[] args) {
-	} /*{
-		Scanner scanner = new Scanner(System.in);
-		Q2_GeometricPrimitives canvas = new Q2_GeometricPrimitives(40, 20);
+
+		//Program Declaration
+		System.out.println("This is a program to display basic 2D geometric primitives by drawing them on a grid.");
+
+		//Instantiating Scanner object
+		Scanner scan = new Scanner(System.in);
+
+		//Instantiating Plotter Object
+		Plotter plotObj = new Plotter(20, 20);
 
 		while (true) {
-			System.out.println("\nGeometric Lab_Practicals.Primitives Drawing Program");
-			System.out.println("1. Draw Base.Point");
-			System.out.println("2. Draw Algorithms.Line");
-			System.out.println("3. Draw Rectangle");
-			System.out.println("4. Draw Algorithms.Circle");
-			System.out.println("5. Clear Canvas");
-			System.out.println("6. Exit");
-			System.out.print("Enter your choice: ");
+			System.out.println("\nWhat do you want to do?");
+			System.out.println("1. Point   2. Line");
+			System.out.println("3. Arc     4. Sector");
+			System.out.println("5. Polygon     8. Display Grid");
+			System.out.println("9. Clear Grid  0. Exit Program");
 
-			int choice = scanner.nextInt();
+			int choice = scan.nextInt();
 
 			switch (choice) {
-				case 1:
-					System.out.print("Enter x coordinate: ");
-					int pointX = scanner.nextInt();
-					System.out.print("Enter y coordinate: ");
-					int pointY = scanner.nextInt();
-					canvas.drawPoint(pointX, pointY);
+				case 1: {
+					System.out.print("Enter the point's coordinates in the following format: x y \n");
+					List<Point> Point = new ArrayList<>();
+					Point.add(new Point(scan.nextInt(), scan.nextInt()));
+					plotObj.WorldPlotObject(Point, 'O');
+					System.out.println("Point drawn.");
+				}
+				break;
+
+				case 2: {
+					System.out.println("Enter the line's start & end coordinates in the following format: x1 y1 x2 y2 ");
+					Point startPoint = new Point(scan.nextInt(), scan.nextInt());
+					Point endPoint = new Point(scan.nextInt(), scan.nextInt());
+					List<Point> Line = Q1_LineDrawing_SimpleDDA.SimpleDDALine(startPoint, endPoint);
+					plotObj.WorldPlotObject(Line, '*');
+					System.out.println("Line drawn.");
+				}
+				break;
+
+				case 3: {
+					System.out.println("Enter the angle for arc (in degrees): ");
+					int angle = scan.nextInt();
+					System.out.println("Enter the radius for arc: ");
+					int radius = scan.nextInt();
+					System.out.println("Enter starting coordinates (x y) for arc: ");
+					Point startPoint = new Point(scan.nextInt(), scan.nextInt());
+					List<Point> Arc = Arc(angle, radius, startPoint);
+					plotObj.WorldPlotObject(Arc, 'o');
+					System.out.println("Arc drawn.");
+				}
+				break;
+
+				case 4: {
+					System.out.println("Enter the angle for sector (in degrees): ");
+					int angle = scan.nextInt();
+					System.out.println("Enter the radius for sector: ");
+					int radius = scan.nextInt();
+					System.out.println("Enter starting coordinates (x y) for sector: ");
+					Point startPoint = new Point(scan.nextInt(), scan.nextInt());
+					List<Point> Sector = Sector(angle, radius, startPoint);
+					plotObj.WorldPlotObject(Sector, 'o');
+					System.out.println("Sector drawn.");
+				}
+				break;
+
+				case 5: {
+					System.out.println("Enter the number of sides for the polygon: ");
+					int sides = scan.nextInt();
+					System.out.println("Enter the length for those sides: ");
+					int length = scan.nextInt();
+					List<Point> Polygon = Polygon(sides, length);
+					plotObj.WorldPlotObject(Polygon, 'x');
+					System.out.println("Polygon drawn.");
+				}
+				break;
+
+				case 8:
+					plotObj.WorldDisplay();
 					break;
 
-				case 2:
-					System.out.print("Enter start x: ");
-					int x0 = scanner.nextInt();
-					System.out.print("Enter start y: ");
-					int y0 = scanner.nextInt();
-					System.out.print("Enter end x: ");
-					int x1 = scanner.nextInt();
-					System.out.print("Enter end y: ");
-					int y1 = scanner.nextInt();
-					canvas.drawLine(x0, y0, x1, y1);
+				case 9:
+					plotObj.ClearWorld();
+					plotObj.WorldDisplay();
 					break;
 
-				case 3:
-					System.out.print("Enter top-left x: ");
-					int rectX = scanner.nextInt();
-					System.out.print("Enter top-left y: ");
-					int rectY = scanner.nextInt();
-					System.out.print("Enter width: ");
-					int rectWidth = scanner.nextInt();
-					System.out.print("Enter height: ");
-					int rectHeight = scanner.nextInt();
-					canvas.drawRectangle(rectX, rectY, rectWidth, rectHeight);
-					break;
-
-				case 4:
-					System.out.print("Enter center x: ");
-					int centerX = scanner.nextInt();
-					System.out.print("Enter center y: ");
-					int centerY = scanner.nextInt();
-					System.out.print("Enter radius: ");
-					int radius = scanner.nextInt();
-					canvas.drawCircle(centerX, centerY, radius);
-					break;
-
-				case 5:
-					canvas.clear();
-					System.out.println("Canvas cleared.");
-					break;
-
-				case 6:
+				case 0:
 					System.out.println("Exiting program.");
-					scanner.close();
+					scan.close();
 					System.exit(0);
 
 				default:
 					System.out.println("Invalid choice. Try again.");
 			}
-
-			// Display the current state of the canvas
-			canvas.display();
 		}
-	}*/
+	}
 
 	//Arc Drawing Algorithm using parametric functions
 	public static List<Point> Arc(double angle, int radius, Point startPoint) {

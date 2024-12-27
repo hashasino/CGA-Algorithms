@@ -11,10 +11,11 @@ import java.util.ArrayList;
 
 public class Q7_LineDrawing_Bresenhams {
 	public static void main(String[] args) {
+
 		//Program Declaration
 		System.out.println("This is a program for 2D line drawing as Raster Graphics Display using Bresenham's Line Drawing Algorithm.");
 
-		//Initializing Scanner object
+		//Instantiating Scanner object
 		Scanner scan = new Scanner(System.in);
 
 		//Taking input for the parameters for the chosen algorithm

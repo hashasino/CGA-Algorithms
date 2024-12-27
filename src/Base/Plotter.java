@@ -2,19 +2,20 @@ package Base;
 
 import java.util.List;
 
-public class Plotter { //Contains methods to print & plot objects
+public class Plotter { //Contains methods to print & plot objects\
+
 	private final int width;
 	private final int height;
-	private final String[][] World;
+	private String[][] World;
 	private final int centerX;
 	private final int centerY;
 
-	public Plotter(int width, int height) {
-		this.width = width * 2 + 1;
-		this.height = height * 2 + 1;
-		this.World = initializeWorldGrid(this.width, this.height);
-		this.centerX = this.width / 2;
-		this.centerY = this.height / 2;
+	public Plotter(int xRadius, int yRadius) {
+		width = xRadius * 2 + 1;
+		height = yRadius * 2 + 1;
+		initializeWorldGrid(width, height);
+		centerX = width / 2;
+		centerY = height / 2;
 	}
 
 	//To initialize grid for plotting a single object
@@ -51,14 +52,14 @@ public class Plotter { //Contains methods to print & plot objects
 	}
 
 	//To initialize grid for plotting multiple objects
-	private String[][] initializeWorldGrid(int width, int height) {
+	private void initializeWorldGrid(int width, int height) {
 
-		String[][] grid = new String[width][height];
+		World = new String[width][height];
 
 		//Initializing grid/frame buffer
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				grid[i][j] = ".";
+				World[i][j] = ".";
 			}
 		}
 
@@ -67,15 +68,13 @@ public class Plotter { //Contains methods to print & plot objects
 		int centerY = height / 2;
 		for (int j = 0; j < height; j++) {
 			int value = centerY - j;
-			grid[centerX][j] = String.valueOf(value); //Ordinate
+			World[centerX][j] = String.valueOf(value); //Ordinate
 		}
 		for (int i = 0; i < width; i++) {
 			int value = i - centerX;
-			grid[i][centerY] = String.valueOf(value); //Abscissa
+			World[i][centerY] = String.valueOf(value); //Abscissa
 		}
-		grid[centerX][centerY] = "0"; //Center
-
-		return grid;
+		World[centerX][centerY] = "0"; //Center
 	}
 
 	//To print object coordinates
