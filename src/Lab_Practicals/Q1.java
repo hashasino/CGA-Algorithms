@@ -1,8 +1,8 @@
 package Lab_Practicals;
 
 import java.awt.*;
-import java.awt.geom.*;
 import java.awt.event.*;
+import java.awt.geom.Line2D;
 
 public class Q1 extends Frame {
 	private int x1, y1, x2, y2;
@@ -55,10 +55,10 @@ public class Q1 extends Frame {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.translate(getWidth() / 2, getHeight() / 2);
 		g2d.scale(1, -1);
-
-		Line2D line = new Line2D.Double(x1, y1, x2, y2);
 		g2d.setColor(Color.BLUE);
 		g2d.setStroke(new BasicStroke(2));
+
+		Line2D line = new Line2D.Double(x1, y1, x2, y2);
 		g2d.draw(line);
 	}
 
