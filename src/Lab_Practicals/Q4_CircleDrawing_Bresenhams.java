@@ -36,7 +36,7 @@ public class Q4_CircleDrawing_Bresenhams {
 		}
 
 		//Instantiating Plotter object of maxRadius
-		Plotter plotObj = new Plotter(2 * maxRadius + 1, 2 * maxRadius + 1);
+		Plotter plotObj = new Plotter(maxRadius + 1, maxRadius + 1);
 
 		//Drawing circles
 		for (int i = 0; i < circle; i++)

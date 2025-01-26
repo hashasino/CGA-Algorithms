@@ -23,11 +23,13 @@ public class Q6_CircleDrawing_DDA {
 		int radius = scan.nextInt();
 
 		//Drawing the circle
-		Plotter.plotObject(DDA(radius), 'o');
+		Plotter plotObj = new Plotter(radius + 1, radius + 1);
+		plotObj.WorldPlotObject(DDACircle(radius), '*');
+		plotObj.WorldDisplay();
 	}
 
 	//DDA Circle Drawing Algorithm
-	public static List<Point> DDA(int radius) {
+	public static List<Point> DDACircle(int radius) {
 
 		//Finding epsilon
 		int power = 0;
